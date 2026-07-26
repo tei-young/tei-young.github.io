@@ -15,7 +15,7 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
   :root{
-    --bg:#FBFBF8; --surface:#FFFFFF; --ink:#14211E; --text:#3F4A45; --muted:#7C857F;
+    --bg:#FBFBF8; --surface:#FFFFFF; --ink:#14211E; --text:#36413C; --muted:#66706A;
     --teal:#0D9488; --teal-d:#0F766E; --tint:#E6F4F1; --line:#E9EAE3;
     --sans:'Noto Sans KR',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
     --maxw:1000px;
@@ -69,40 +69,41 @@
   .card .ic{width:34px;height:34px;border-radius:9px;background:var(--tint);display:grid;place-items:center;margin-bottom:13px;}
   .card .ic svg{width:18px;height:18px;stroke:var(--teal-d);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
   .card h3{font-size:15.5px;color:var(--ink);font-weight:700;letter-spacing:-.01em;}
-  .card p{font-size:14px;color:var(--text);margin-top:9px;line-height:1.7;}
+  .card p{font-size:14.5px;color:var(--text);margin-top:10px;line-height:1.75;}
   .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-top:28px;}
   .kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
   .kpi .v{font-size:24px;font-weight:800;color:var(--teal);letter-spacing:-.02em;}
-  .kpi .k{font-size:12.5px;color:var(--muted);margin-top:3px;}
-  .bio p{margin-bottom:18px;font-size:16px;line-height:1.85;} .bio strong{color:var(--ink);font-weight:600;}
-  .bio{max-width:760px;margin-bottom:44px;}
+  .kpi .k{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.5;}
+  .bio p{margin-bottom:18px;font-size:16.5px;line-height:1.9;} .bio strong{color:var(--ink);font-weight:600;}
+  .bio{max-width:740px;margin-bottom:44px;}
 
   /* cases */
   .case{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:36px 40px;margin-bottom:36px;box-shadow:0 2px 10px rgba(20,33,30,.04);}
   .case .top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
   .case .co{font-size:12px;font-weight:700;color:var(--teal-d);background:var(--tint);border-radius:6px;padding:3px 9px;}
   .case .yr{font-size:12px;color:var(--muted);}
-  .case .num{font-size:12.5px;font-weight:800;color:var(--teal);letter-spacing:.08em;margin-bottom:10px;}
-  .case h3{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.015em;line-height:1.4;}
+  .case .num{font-size:12px;font-weight:800;color:var(--teal-d);letter-spacing:.1em;margin-bottom:12px;}
+  .case h3{font-size:23px;font-weight:700;color:var(--ink);letter-spacing:-.015em;line-height:1.45;max-width:800px;}
   .metric{display:flex;align-items:baseline;gap:12px;margin:20px 0 8px;}
   .metric .fig{font-size:32px;font-weight:800;color:var(--teal);letter-spacing:-.02em;line-height:1;}
-  .metric .lab{font-size:13px;color:var(--muted);}
-  .clist{list-style:none;margin-top:18px;display:grid;gap:12px;}
-  .clist li{position:relative;padding-left:20px;font-size:15px;line-height:1.7;}
-  .clist li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--teal);opacity:.6;}
+  .metric .lab{font-size:13.5px;color:var(--muted);}
+  .clist{list-style:none;margin-top:18px;display:grid;gap:13px;max-width:720px;border-top:1px solid #E4E9E0;border-bottom:1px solid #E4E9E0;padding:18px 0;}
+  .clist li{position:relative;padding-left:21px;font-size:16px;line-height:1.8;}
+  .clist li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--teal);}
   .clist strong{color:var(--ink);font-weight:600;}
-  .result{margin-top:20px;background:var(--tint);border-radius:10px;padding:14px 18px;font-size:14.5px;color:var(--ink);line-height:1.7;}
+  .result{margin-top:22px;background:var(--tint);border-radius:10px;padding:16px 20px;font-size:15px;color:var(--ink);line-height:1.75;max-width:760px;}
   .result .rl{display:block;font-size:11.5px;font-weight:700;letter-spacing:.06em;color:var(--teal-d);margin-bottom:6px;}
   .result ul{list-style:none;display:grid;gap:5px;}
-  .result li{position:relative;padding-left:14px;font-size:14px;}
+  .result li{position:relative;padding-left:15px;font-size:15px;line-height:1.75;}
   .result li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--teal-d);}
-  .figure{margin-top:24px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px 14px 10px;}
+  .figure{margin-top:24px;background:#E7EDE2;border:1px solid #CDD8C6;border-radius:12px;padding:22px 18px 16px;box-shadow:inset 0 1px 3px rgba(20,33,30,.04);}
   .figure svg{width:100%;height:auto;display:block;}
-  .figure .cap{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+  .figure svg rect[fill="#FFFFFF"]{filter:drop-shadow(0 1px 1px rgba(20,33,30,.06));}
+  .figure .cap{font-size:13px;color:#5C665F;margin-top:12px;text-align:center;line-height:1.6;}
   .bars{margin-top:16px;max-width:460px;display:grid;gap:10px;}
   .bar{display:grid;grid-template-columns:58px 1fr 54px;gap:12px;align-items:center;}
   .bar .bl{font-size:13px;color:var(--muted);}
-  .bar .bt{height:18px;border-radius:5px;background:var(--tint);overflow:hidden;}
+  .bar .bt{height:20px;border-radius:5px;background:#DCE7E3;overflow:hidden;}
   .bar .bt span{display:block;height:100%;border-radius:5px;}
   .bar .bv{font-size:13px;font-weight:600;color:var(--ink);text-align:right;}
   .logorow{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
@@ -114,7 +115,7 @@
   .acc summary{cursor:pointer;list-style:none;padding:22px 26px;display:flex;align-items:center;gap:12px;}
   .acc summary::-webkit-details-marker{display:none;}
   .acc summary .co{font-size:11.5px;font-weight:700;color:var(--teal-d);background:var(--tint);border-radius:6px;padding:3px 8px;white-space:nowrap;}
-  .acc summary .ti{font-size:15.5px;color:var(--ink);font-weight:600;flex:1;}
+  .acc summary .ti{font-size:16px;color:var(--ink);font-weight:600;flex:1;line-height:1.5;}
   .acc summary .chev{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2;transition:transform .2s;flex:0 0 auto;}
   .acc[open] summary .chev{transform:rotate(180deg);}
   .acc .inner{padding:0 22px 22px;}
@@ -129,7 +130,7 @@
   .tl .yr{font-size:12.5px;color:var(--teal-d);font-weight:700;}
   .tl .co{font-size:17px;color:var(--ink);font-weight:700;margin-top:2px;letter-spacing:-.01em;}
   .tl .ro{font-size:13.5px;color:var(--muted);margin-top:2px;}
-  .tl .ds{font-size:14.5px;margin-top:9px;max-width:640px;line-height:1.75;}
+  .tl .ds{font-size:15px;margin-top:10px;max-width:660px;line-height:1.8;}
 
   /* stack */
   .stack{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:12px;}
@@ -264,14 +265,14 @@
     <div class="num">CASE 01</div>
     <h3>AI·자동화로 TC 작성 4–5일 → 1–2일, 반복 검증은 배포마다 자동 실행</h3>
     <div class="metric"><span class="fig">20–30%</span><span class="lab">QA 리소스 절감</span></div>
-    <p class="lead" style="font-size:15px;margin-top:14px;">TC 작성과 반복 검증에 드는 시간을 줄이기 위해 AI 기반 도구와 자동화 테스트를 직접 구축했습니다.</p>
+    <p class="lead" style="font-size:16px;margin-top:16px;max-width:760px;line-height:1.8;">TC 작성과 반복 검증에 드는 시간을 줄이기 위해 AI 기반 도구와 자동화 테스트를 직접 구축했습니다.</p>
     <ul class="clist">
       <li><strong>AI 기반 TC 생성</strong> — Figma MCP와 복수의 skill-subagent를 구성한 Claude Code 기반 도구 제작, 최종 사용 TC 기준 <strong>70~90% 자동 산출</strong></li>
       <li><strong>API 자동화</strong> — 전체 구매 플로우(로그인 → 결제 → 배송 완료 → 구매 확정)를 Jenkins job으로 백엔드 배포마다 상시 실행 (Postman → Python 이관 중)</li>
       <li><strong>앱 E2E 자동화</strong> — Maestro 기반 반복 검증 자동화(약 50% 구축), 배포 체크리스트 수행 2일 → 1일 이내</li>
       <li><strong>자동화 신뢰성 검증</strong> — AI가 만든 테스트가 실제 화면·기능을 근거로 판단하는지 확인하기 위해, 앱 코드에 의도적으로 버그를 주입해 기대대로 실패하는지 검증하는 방식을 직접 고안</li>
     </ul>
-    <div class="figure"><svg viewBox="0 0 660 100" role="img"><defs><marker id="p1" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#0D9488" stroke-width="1.5"/></marker></defs><rect x="6" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="81" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">구매 플로우 API</text><text x="81" y="64" text-anchor="middle" font-size="11" fill="#7C857F">로그인→구매확정</text><line x1="159" y1="50" x2="170" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#p1)"/><rect x="172" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="247" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">GitHub Actions</text><text x="247" y="64" text-anchor="middle" font-size="11" fill="#7C857F">컬렉션 동기화</text><line x1="325" y1="50" x2="336" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#p1)"/><rect x="338" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="413" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">Jenkins</text><text x="413" y="64" text-anchor="middle" font-size="11" fill="#7C857F">배포마다 자동 실행</text><line x1="491" y1="50" x2="502" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#p1)"/><rect x="504" y="20" width="150" height="60" rx="9" fill="#E6F4F1" stroke="#0D9488"/><text x="579" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#0F766E">상시 모니터링</text><text x="579" y="64" text-anchor="middle" font-size="11" fill="#0F766E">이상 즉시 탐지</text></svg><div class="cap">백엔드 배포 트리거로 상시 실행 — 전체 회귀 없이 이상 구간 즉시 탐지</div></div>
+    <div class="figure"><svg viewBox="0 0 660 100" role="img"><defs><marker id="p1" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#0D9488" stroke-width="1.5"/></marker></defs><rect x="6" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="81" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">구매 플로우 API</text><text x="81" y="64" text-anchor="middle" font-size="11" fill="#5C665F">로그인→구매확정</text><line x1="159" y1="50" x2="170" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#p1)"/><rect x="172" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="247" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">GitHub Actions</text><text x="247" y="64" text-anchor="middle" font-size="11" fill="#5C665F">컬렉션 동기화</text><line x1="325" y1="50" x2="336" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#p1)"/><rect x="338" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="413" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">Jenkins</text><text x="413" y="64" text-anchor="middle" font-size="11" fill="#5C665F">배포마다 자동 실행</text><line x1="491" y1="50" x2="502" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#p1)"/><rect x="504" y="20" width="150" height="60" rx="9" fill="#E6F4F1" stroke="#0D9488"/><text x="579" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#0F766E">상시 모니터링</text><text x="579" y="64" text-anchor="middle" font-size="11" fill="#0F766E">이상 즉시 탐지</text></svg><div class="cap">백엔드 배포 트리거로 상시 실행 — 전체 회귀 없이 이상 구간 즉시 탐지</div></div>
     <div class="result"><span class="rl">결과</span>
       <ul><li>TC 작성 기간 4–5일 → 1–2일로 단축</li><li>결제 모듈·쿠폰 발급·마트 주소 변경 API 오류를 배포 전 조기 검출</li></ul>
     </div>
@@ -282,7 +283,7 @@
     <div class="num">CASE 02</div>
     <h3>테스트 지표를 수치화해 QA 일정·비용을 근거로 산정하는 플랫폼을 만들다</h3>
     <div class="metric"><span class="fig">0.5MD</span><span class="lab">일정 산정 오차</span></div>
-    <p class="lead" style="font-size:15px;margin-top:14px;">상용 도구의 비용 부담과 스프레드시트로는 테스트 지표를 수치화할 수 없다는 문제를 해결하기 위해, QA 활동 전반을 관리하는 사내 플랫폼을 단독 설계·개발했습니다. (TypeScript · PostgreSQL, 약 60일)</p>
+    <p class="lead" style="font-size:16px;margin-top:16px;max-width:760px;line-height:1.8;">상용 도구의 비용 부담과 스프레드시트로는 테스트 지표를 수치화할 수 없다는 문제를 해결하기 위해, QA 활동 전반을 관리하는 사내 플랫폼을 단독 설계·개발했습니다. (TypeScript · PostgreSQL, 약 60일)</p>
     <ul class="clist">
       <li>TC CRUD·버전 관리·실행 이력·결과 기록·대시보드 제공, 스프레드시트 호환을 위한 CSV/XLSX import·export</li>
       <li>기존 GitHub Actions·Jenkins 자동화의 실행 결과·리포트를 통합 관리</li>
@@ -290,14 +291,14 @@
       <li>테스터별 TC 100개당 소요 시간과 프로젝트 복잡도를 반영해 일정 산정</li>
     </ul>
     <div class="figure"><svg viewBox="0 0 660 150" role="img">
-<rect x="8" y="14" width="196" height="46" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="106" y="34" text-anchor="middle" font-size="12.5" font-weight="600" fill="#14211E">AI 기반 TC 생성</text><text x="106" y="50" text-anchor="middle" font-size="10.5" fill="#7C857F">Claude skill · Figma MCP</text>
-<rect x="8" y="66" width="196" height="46" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="106" y="86" text-anchor="middle" font-size="12.5" font-weight="600" fill="#14211E">자동화 실행</text><text x="106" y="102" text-anchor="middle" font-size="10.5" fill="#7C857F">GitHub Actions · Jenkins</text>
+<rect x="8" y="14" width="196" height="46" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="106" y="34" text-anchor="middle" font-size="12.5" font-weight="600" fill="#14211E">AI 기반 TC 생성</text><text x="106" y="50" text-anchor="middle" font-size="10.5" fill="#5C665F">Claude skill · Figma MCP</text>
+<rect x="8" y="66" width="196" height="46" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="106" y="86" text-anchor="middle" font-size="12.5" font-weight="600" fill="#14211E">자동화 실행</text><text x="106" y="102" text-anchor="middle" font-size="10.5" fill="#5C665F">GitHub Actions · Jenkins</text>
 <rect x="238" y="40" width="184" height="66" rx="10" fill="#E6F4F1" stroke="#0D9488"/><text x="330" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#0F766E">사내 QA 플랫폼</text><text x="330" y="88" text-anchor="middle" font-size="11" fill="#0F766E">TC 관리 · 실행 결과 · 대시보드</text>
 <line x1="208" y1="37" x2="232" y2="60" stroke="#0D9488" stroke-width="1.5"/><line x1="208" y1="89" x2="232" y2="86" stroke="#0D9488" stroke-width="1.5"/>
-<rect x="456" y="14" width="196" height="46" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="554" y="34" text-anchor="middle" font-size="12.5" font-weight="600" fill="#14211E">테스트 지표 수치화</text><text x="554" y="50" text-anchor="middle" font-size="10.5" fill="#7C857F">속도 · 성공률 · 버그 발생률</text>
-<rect x="456" y="66" width="196" height="46" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="554" y="86" text-anchor="middle" font-size="12.5" font-weight="600" fill="#14211E">QA 일정·비용 산정</text><text x="554" y="102" text-anchor="middle" font-size="10.5" fill="#7C857F">오차 약 0.5MD</text>
+<rect x="456" y="14" width="196" height="46" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="554" y="34" text-anchor="middle" font-size="12.5" font-weight="600" fill="#14211E">테스트 지표 수치화</text><text x="554" y="50" text-anchor="middle" font-size="10.5" fill="#5C665F">속도 · 성공률 · 버그 발생률</text>
+<rect x="456" y="66" width="196" height="46" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="554" y="86" text-anchor="middle" font-size="12.5" font-weight="600" fill="#14211E">QA 일정·비용 산정</text><text x="554" y="102" text-anchor="middle" font-size="10.5" fill="#5C665F">오차 약 0.5MD</text>
 <line x1="426" y1="60" x2="450" y2="37" stroke="#0D9488" stroke-width="1.5"/><line x1="426" y1="86" x2="450" y2="89" stroke="#0D9488" stroke-width="1.5"/>
-<text x="330" y="132" text-anchor="middle" font-size="11" fill="#7C857F">QA 파트 4명 + 자회사 테스터 2명 상시 사용 · 사내 배포 준비 중</text>
+<text x="330" y="132" text-anchor="middle" font-size="11" fill="#5C665F">QA 파트 4명 + 자회사 테스터 2명 상시 사용 · 사내 배포 준비 중</text>
 </svg><div class="cap">TC 생성 · 자동화 실행 · 지표 관리를 하나의 플랫폼으로 통합</div></div>
     <div class="result"><span class="rl">결과</span>
       <ul><li>테스트 속도·성공률·버그 발생률을 수치로 관리, 일정 산정 오차 약 0.5MD</li><li>QA 파트 4명 + 자회사 테스터 2명 상시 사용, 사내 배포를 위해 DevOps와 협업 진행 중</li></ul>
@@ -307,7 +308,7 @@
   <article class="case">
     <div class="num">CASE 03</div>
     <h3>배포를 미루는 결정과, 배포를 막는 결정을 직접 내리다</h3>
-    <p class="lead" style="font-size:15px;margin-top:14px;">릴리즈 가부를 이슈의 성격과 영향범위를 근거로 판단하고, 이해관계자를 설득해 일정을 조정했습니다.</p>
+    <p class="lead" style="font-size:16px;margin-top:16px;max-width:760px;line-height:1.8;">릴리즈 가부를 이슈의 성격과 영향범위를 근거로 판단하고, 이해관계자를 설득해 일정을 조정했습니다.</p>
     <ul class="clist">
       <li><strong>배포 연기</strong> — POS v2→v3에서 핵심 기능인 상품가격 동기화가 동작하지 않는 blocker급 이슈 발생. 수정 후 재확인 과정에서 이미 검증한 기본 동작에서도 문제가 나와 <strong>기존 테스트 결과를 신뢰할 수 없다고 판단</strong>, 사업부·PM·개발자에게 근거를 공유해 추가 테스트 일정 확보</li>
       <li><strong>핫픽스 반려</strong> — 영업·사업부의 B2B 편의기능 핫픽스 요청에 대해, 더 높은 우선순위 개발이 진행 중이고 정규 배포 프로세스로 안정성을 확보하는 편이 낫다고 판단해 근거를 들어 반대</li>
@@ -321,14 +322,14 @@
   <article class="case">
     <div class="num">CASE 04</div>
     <h3>POS 연동 데이터 흐름을 직접 분석해 크리티컬 참조 오류를 QA 전 차단</h3>
-    <p class="lead" style="font-size:15px;margin-top:14px;">마트 POS 기기의 상품 데이터를 자사 서비스로 연동하는 핵심 프로그램의 v2→v3 리빌드를 담당했습니다.</p>
+    <p class="lead" style="font-size:16px;margin-top:16px;max-width:760px;line-height:1.8;">마트 POS 기기의 상품 데이터를 자사 서비스로 연동하는 핵심 프로그램의 v2→v3 리빌드를 담당했습니다.</p>
     <ul class="clist">
       <li>히스토리 추적이 어려운 v2를 데이터 플로우 기준으로 <strong>직접 플로우차트화해 TC 작성</strong> → 이 TC가 v3 기획의 초안 역할</li>
       <li>POS 업체별로 <strong>DB 엔진(MySQL·Oracle 등)과 테이블 구성이 모두 달라</strong> 업체 특성별 분기 케이스 설계, 실데이터 복사·분석(AI 활용)으로 특이사항 명세화</li>
       <li>QA 전 DB를 동일하게 재구성·간이 테스트해 <strong>특정 POS의 상품 테이블 참조 오류(개발 DB 조사 오류)를 규명</strong></li>
       <li>사용량 증가가 예상되던 미검증 기능(전단 상품)을 TC 범위 밖까지 선제 검증해 잠재 결함 발견</li>
     </ul>
-    <div class="figure"><svg viewBox="0 0 660 110" role="img"><defs><marker id="q1" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#0D9488" stroke-width="1.5"/></marker></defs><rect x="8" y="22" width="184" height="62" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="100" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#14211E">마트 POS DB</text><text x="100" y="69" text-anchor="middle" font-size="11.5" fill="#7C857F">엔진·테이블 구성 상이</text><line x1="196" y1="53" x2="232" y2="53" stroke="#0D9488" stroke-width="1.6" marker-end="url(#q1)"/><rect x="238" y="22" width="184" height="62" rx="9" fill="#E6F4F1" stroke="#0D9488"/><text x="330" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#0F766E">연동 프로그램 v3</text><text x="330" y="69" text-anchor="middle" font-size="11.5" fill="#0F766E">플로우차트 기반 TC</text><line x1="426" y1="53" x2="462" y2="53" stroke="#0D9488" stroke-width="1.6" marker-end="url(#q1)"/><rect x="468" y="22" width="184" height="62" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="560" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#14211E">자사 서비스</text><text x="560" y="69" text-anchor="middle" font-size="11.5" fill="#7C857F">상품 데이터 연동</text></svg><div class="cap">POS DB → 연동 프로그램 v3 → 자사 서비스 · 전달 지점과 참조 테이블 검증</div></div>
+    <div class="figure"><svg viewBox="0 0 660 110" role="img"><defs><marker id="q1" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#0D9488" stroke-width="1.5"/></marker></defs><rect x="8" y="22" width="184" height="62" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="100" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#14211E">마트 POS DB</text><text x="100" y="69" text-anchor="middle" font-size="11.5" fill="#5C665F">엔진·테이블 구성 상이</text><line x1="196" y1="53" x2="232" y2="53" stroke="#0D9488" stroke-width="1.6" marker-end="url(#q1)"/><rect x="238" y="22" width="184" height="62" rx="9" fill="#E6F4F1" stroke="#0D9488"/><text x="330" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#0F766E">연동 프로그램 v3</text><text x="330" y="69" text-anchor="middle" font-size="11.5" fill="#0F766E">플로우차트 기반 TC</text><line x1="426" y1="53" x2="462" y2="53" stroke="#0D9488" stroke-width="1.6" marker-end="url(#q1)"/><rect x="468" y="22" width="184" height="62" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="560" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#14211E">자사 서비스</text><text x="560" y="69" text-anchor="middle" font-size="11.5" fill="#5C665F">상품 데이터 연동</text></svg><div class="cap">POS DB → 연동 프로그램 v3 → 자사 서비스 · 전달 지점과 참조 테이블 검증</div></div>
     <div class="result"><span class="rl">결과</span>
       <ul><li>크리티컬급 이슈를 TC 작성 단계에서 사전 차단</li><li>이슈의 50% 이상에서 로그 기반으로 원인·발생 지점을 함께 전달해 개발 핸드오프 속도 향상</li></ul>
     </div>
@@ -337,7 +338,7 @@
   <article class="case">
     <div class="num">CASE 05</div>
     <h3>외부 서비스 내재화를 기획 정의부터 릴리즈 판단까지 단독으로 끌고 가다</h3>
-    <p class="lead" style="font-size:15px;margin-top:14px;">외부 알림톡 서비스를 자사 서비스로 내재화해, "고객에게 낮은 단가로 이벤트 알림을 보내고 싶다"는 기존 고객 니즈를 구현하는 프로젝트를 처음부터 끝까지 담당했습니다.</p>
+    <p class="lead" style="font-size:16px;margin-top:16px;max-width:760px;line-height:1.8;">외부 알림톡 서비스를 자사 서비스로 내재화해, "고객에게 낮은 단가로 이벤트 알림을 보내고 싶다"는 기존 고객 니즈를 구현하는 프로젝트를 처음부터 끝까지 담당했습니다.</p>
     <ul class="clist">
       <li><strong>기획 고도화</strong> — 정의가 누락된 항목을 질문으로 구체화(임시저장은 내부 미리보기만 갱신 / 최종저장은 실제 유저 노출 화면에 반영)</li>
       <li><strong>로직 검토</strong> — 내재화 시 삭제하려던 자사 기능 연동을 유지하되 컴포넌트를 정확히 매핑해 누락을 최소화하는 방향으로 개선 기여</li>
@@ -350,7 +351,7 @@
     <div class="num">CASE 06</div>
     <h3>테스터 운영으로 3개월·3회 릴리즈를 1개월·1회로 압축</h3>
     <div class="metric"><span class="fig">67%↓</span><span class="lab">릴리즈 일정 단축</span></div>
-    <p class="lead" style="font-size:15px;margin-top:14px;">자회사 테스터 2명을 운영하며 직접 실행이 아닌 운영·조율로 역할을 수행했습니다.</p>
+    <p class="lead" style="font-size:16px;margin-top:16px;max-width:760px;line-height:1.8;">자회사 테스터 2명을 운영하며 직접 실행이 아닌 운영·조율로 역할을 수행했습니다.</p>
     <ul class="clist">
       <li>기획 정의 단계부터 테스터 역량·속도를 기반으로 TC 작성·수행·회귀·보류 일정을 역산</li>
       <li>본인 일정은 이슈·리소스·회귀 대응 위주로 설계</li>
@@ -363,7 +364,7 @@
   <article class="case">
     <div class="num">CASE 07</div>
     <h3>유출 결함을 계기로 재발 방지 커뮤니케이션 프로세스를 직접 설계·도입</h3>
-    <p class="lead" style="font-size:15px;margin-top:14px;">자회사 서비스 내재화 중 도메인 지식이 일부 인원에 편중된 채 진행되며, 보고된 이슈가 "문제없음"으로 판단돼 유출 결함이 발생했습니다.</p>
+    <p class="lead" style="font-size:16px;margin-top:16px;max-width:760px;line-height:1.8;">자회사 서비스 내재화 중 도메인 지식이 일부 인원에 편중된 채 진행되며, 보고된 이슈가 "문제없음"으로 판단돼 유출 결함이 발생했습니다.</p>
     <ul class="clist">
       <li>개인 실수가 아닌 <strong>"서로 같은 것을 본다고 가정한" 구조의 문제</strong>로 진단</li>
       <li>기획 논의를 피그마·노션 코멘트로 소통·아카이빙해 판단 근거 보존</li>
@@ -386,7 +387,7 @@
       <li>권한·데이터 마이그레이션 등 정책 영역까지 TC에 반영</li>
       <li>업무 외 학습을 이어가 <strong>AWS SAA 취득</strong>, 팀 내 클라우드 테스트 가이드로 자산화</li>
     </ul>
-    <div class="figure"><svg viewBox="0 0 660 100" role="img"><defs><marker id="a3" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#0D9488" stroke-width="1.5"/></marker></defs><rect x="6" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="81" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">클라우드 전환</text><text x="81" y="64" text-anchor="middle" font-size="11" fill="#7C857F">신규 인프라</text><line x1="159" y1="50" x2="170" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a3)"/><rect x="172" y="20" width="150" height="60" rx="9" fill="#E6F4F1" stroke="#0D9488"/><text x="247" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#0F766E">Side effect 탐색</text><text x="247" y="64" text-anchor="middle" font-size="11" fill="#0F766E">유저 기능 관점</text><line x1="325" y1="50" x2="336" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a3)"/><rect x="338" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="413" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">S3·버킷 이미지</text><text x="413" y="64" text-anchor="middle" font-size="11" fill="#7C857F">미노출 이슈 규명</text><line x1="491" y1="50" x2="502" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a3)"/><rect x="504" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="579" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">유저 CS</text><text x="579" y="64" text-anchor="middle" font-size="11" fill="#7C857F">40% 감소</text></svg><div class="cap">전환 직후 회차 미노출을 S3 버킷 이미지 문제로 규명 → 관련 CS 40% 감소</div></div>
+    <div class="figure"><svg viewBox="0 0 660 100" role="img"><defs><marker id="a3" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#0D9488" stroke-width="1.5"/></marker></defs><rect x="6" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="81" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">클라우드 전환</text><text x="81" y="64" text-anchor="middle" font-size="11" fill="#5C665F">신규 인프라</text><line x1="159" y1="50" x2="170" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a3)"/><rect x="172" y="20" width="150" height="60" rx="9" fill="#E6F4F1" stroke="#0D9488"/><text x="247" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#0F766E">Side effect 탐색</text><text x="247" y="64" text-anchor="middle" font-size="11" fill="#0F766E">유저 기능 관점</text><line x1="325" y1="50" x2="336" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a3)"/><rect x="338" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="413" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">S3·버킷 이미지</text><text x="413" y="64" text-anchor="middle" font-size="11" fill="#5C665F">미노출 이슈 규명</text><line x1="491" y1="50" x2="502" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a3)"/><rect x="504" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="579" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">유저 CS</text><text x="579" y="64" text-anchor="middle" font-size="11" fill="#5C665F">40% 감소</text></svg><div class="cap">전환 직후 회차 미노출을 S3 버킷 이미지 문제로 규명 → 관련 CS 40% 감소</div></div>
     <div class="logorow"><span class="lg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zM21.698 16.207c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zM22.792 14.961c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>AWS</span></div></div>
   </details>
 
@@ -396,7 +397,7 @@
       <li>신규 AI 기능(Helix) 테스팅을 위한 명세 확인·기획 참여, 테스트 방식 문서화</li>
       <li>기획·개발과 함께 신규 기능의 API 명세 고도화</li>
     </ul>
-    <div class="figure"><svg viewBox="0 0 660 110" role="img"><defs><marker id="a4" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#0D9488" stroke-width="1.5"/></marker></defs><rect x="8" y="22" width="184" height="62" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="100" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#14211E">QA · CBT · Prod</text><text x="100" y="69" text-anchor="middle" font-size="11.5" fill="#7C857F">환경별 변수 설정</text><line x1="196" y1="53" x2="232" y2="53" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a4)"/><rect x="238" y="22" width="184" height="62" rx="9" fill="#E6F4F1" stroke="#0D9488"/><text x="330" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#0F766E">API 명세 검증</text><text x="330" y="69" text-anchor="middle" font-size="11.5" fill="#0F766E">응답·디바이스 대조</text><line x1="426" y1="53" x2="462" y2="53" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a4)"/><rect x="468" y="22" width="184" height="62" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="560" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#14211E">Helix 명세 고도화</text><text x="560" y="69" text-anchor="middle" font-size="11.5" fill="#7C857F">기획·개발 협업</text></svg><div class="cap">환경별 변수로 API 명세를 검증하고 신규 AI 기능(Helix) 명세를 고도화</div></div>
+    <div class="figure"><svg viewBox="0 0 660 110" role="img"><defs><marker id="a4" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#0D9488" stroke-width="1.5"/></marker></defs><rect x="8" y="22" width="184" height="62" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="100" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#14211E">QA · CBT · Prod</text><text x="100" y="69" text-anchor="middle" font-size="11.5" fill="#5C665F">환경별 변수 설정</text><line x1="196" y1="53" x2="232" y2="53" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a4)"/><rect x="238" y="22" width="184" height="62" rx="9" fill="#E6F4F1" stroke="#0D9488"/><text x="330" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#0F766E">API 명세 검증</text><text x="330" y="69" text-anchor="middle" font-size="11.5" fill="#0F766E">응답·디바이스 대조</text><line x1="426" y1="53" x2="462" y2="53" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a4)"/><rect x="468" y="22" width="184" height="62" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="560" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#14211E">Helix 명세 고도화</text><text x="560" y="69" text-anchor="middle" font-size="11.5" fill="#5C665F">기획·개발 협업</text></svg><div class="cap">환경별 변수로 API 명세를 검증하고 신규 AI 기능(Helix) 명세를 고도화</div></div>
     <p class="result"><span class="rl">결과</span>환경·명세 레벨의 검증 체계를 구축 — 현재 애즈위 API 검증·자동화의 토대.</p>
     <div class="logorow"><span class="lg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.428 6.573.843 12.587-3.801 13.428-10.374C24.744 6.955 20.101.943 13.527.099zm2.471 7.485a.855.855 0 0 0-.593.25l-4.453 4.453-.307-.307-.643-.643c4.389-4.376 5.18-4.418 5.996-3.753zm-4.863 4.861l4.44-4.44a.62.62 0 1 1 .847.903l-4.699 4.125-.588-.588zm.33.694l-1.1.238a.06.06 0 0 1-.067-.032.06.06 0 0 1 .01-.073l.645-.645.512.512zm-2.803-.459l1.172-1.172.879.878-1.979.426a.074.074 0 0 1-.085-.039.072.072 0 0 1 .013-.093zm-3.646 6.058a.076.076 0 0 1-.069-.083.077.077 0 0 1 .022-.046h.002l.946-.946 1.222 1.222-2.123-.147zm2.425-1.256a.228.228 0 0 0-.117.256l.203.865a.125.125 0 0 1-.211.117h-.003l-.934-.934-.294-.295 3.762-3.758 1.82-.393.874.874c-1.255 1.102-2.971 2.201-5.1 3.268zm5.279-3.428h-.002l-.839-.839 4.699-4.125a.952.952 0 0 0 .119-.127c-.148 1.345-2.029 3.245-3.977 5.091zm3.657-6.46l-.003-.002a1.822 1.822 0 0 1 2.459-2.684l-1.61 1.613a.119.119 0 0 0 0 .169l1.247 1.247a1.817 1.817 0 0 1-2.093-.343zm2.578 0a1.714 1.714 0 0 1-.271.218h-.001l-1.207-1.207 1.533-1.533c.661.72.637 1.832-.054 2.522zM18.855 6.05a.143.143 0 0 0-.053.157.416.416 0 0 1-.053.45.14.14 0 0 0 .023.197.141.141 0 0 0 .084.03.14.14 0 0 0 .106-.05.691.691 0 0 0 .087-.751.138.138 0 0 0-.194-.033z"/></svg>Postman</span><span class="lg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12c6.616 0 12-5.383 12-12S18.616 0 12 0zm0 1.144c5.995 0 10.856 4.86 10.856 10.856 0 5.995-4.86 10.856-10.856 10.856-5.996 0-10.856-4.86-10.856-10.856C1.144 6.004 6.004 1.144 12 1.144zM8.37 5.868a6.707 6.707 0 0 0-.423.005c-.983.056-1.573.517-1.735 1.472-.115.665-.096 1.348-.143 2.017-.013.35-.05.697-.115 1.038-.134.609-.397.798-1.016.83a2.65 2.65 0 0 0-.244.042v1.463c1.126.055 1.278.452 1.37 1.629.033.429-.013.858.015 1.287.018.406.073.808.156 1.2.259 1.075 1.307 1.435 2.575 1.218v-1.283c-.203 0-.383.005-.558 0-.43-.013-.591-.12-.632-.535-.056-.535-.042-1.08-.075-1.62-.064-1.001-.175-1.988-1.153-2.625.503-.37.868-.812.983-1.398.083-.41.134-.821.166-1.237.028-.415-.023-.84.014-1.25.06-.665.102-.937.9-.91.12 0 .235-.017.369-.027v-1.31c-.16 0-.31-.004-.454-.006zm7.593.009a4.247 4.247 0 0 0-.813.06v1.274c.245 0 .434 0 .623.005.328.004.577.13.61.494.032.332.031.669.064 1.006.065.669.101 1.347.217 2.007.102.544.475.95.941 1.283-.817.549-1.057 1.333-1.098 2.215-.023.604-.037 1.213-.069 1.822-.028.554-.222.734-.78.748-.157.004-.31.018-.484.028v1.305c.327 0 .627.019.927 0 .932-.055 1.495-.507 1.68-1.412.078-.498.124-1 .138-1.504.032-.461.028-.927.074-1.384.069-.715.397-1.01 1.112-1.057a.972.972 0 0 0 .199-.046v-1.463c-.12-.014-.204-.027-.291-.032-.536-.023-.804-.203-.937-.71a5.146 5.146 0 0 1-.152-.993c-.037-.618-.033-1.241-.074-1.86-.08-1.192-.794-1.753-1.887-1.786zm-6.89 5.28a.844.844 0 0 0-.083 1.684h.055a.83.83 0 0 0 .877-.78v-.046a.845.845 0 0 0-.83-.858zm2.911 0a.808.808 0 0 0-.834.78c0 .027 0 .05.004.078 0 .503.342.826.859.826.507 0 .826-.332.826-.853-.005-.503-.342-.836-.855-.831zm2.963 0a.861.861 0 0 0-.876.835c0 .47.378.849.849.849h.009c.425.074.853-.337.881-.83.023-.457-.392-.854-.863-.854z"/></svg>Swagger</span></div></div>
   </details>
@@ -407,7 +408,7 @@
       <li>기존 TestCase를 개발 상황·기획 의도에 맞게 수정·보강하고, 신규 User Case 기반 시나리오 설계</li>
       <li>자사 하드웨어–소프트웨어 통합 및 실사용 환경(네트워크 불안정·동시 접속 등) 시나리오까지 검증</li>
     </ul>
-    <div class="figure"><svg viewBox="0 0 660 100" role="img"><defs><marker id="a5" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#0D9488" stroke-width="1.5"/></marker></defs><rect x="6" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="81" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">Sprint Planning</text><text x="81" y="64" text-anchor="middle" font-size="11" fill="#7C857F">기획 의도·User Case</text><line x1="159" y1="50" x2="170" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a5)"/><rect x="172" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="247" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">개발</text><text x="247" y="64" text-anchor="middle" font-size="11" fill="#7C857F">빌드</text><line x1="325" y1="50" x2="336" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a5)"/><rect x="338" y="20" width="150" height="60" rx="9" fill="#E6F4F1" stroke="#0D9488"/><text x="413" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#0F766E">QA 검증</text><text x="413" y="64" text-anchor="middle" font-size="11" fill="#0F766E">TC 설계·예외 시나리오</text><line x1="491" y1="50" x2="502" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a5)"/><rect x="504" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#E9EAE3"/><text x="579" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">릴리즈</text><text x="579" y="64" text-anchor="middle" font-size="11" fill="#7C857F">회귀·통합 테스트</text></svg><div class="cap">기획 단계부터 QA가 참여해 User Case 기반 시나리오를 설계 → 결함 검출율 50% 이상 향상</div></div>
+    <div class="figure"><svg viewBox="0 0 660 100" role="img"><defs><marker id="a5" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#0D9488" stroke-width="1.5"/></marker></defs><rect x="6" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="81" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">Sprint Planning</text><text x="81" y="64" text-anchor="middle" font-size="11" fill="#5C665F">기획 의도·User Case</text><line x1="159" y1="50" x2="170" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a5)"/><rect x="172" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="247" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">개발</text><text x="247" y="64" text-anchor="middle" font-size="11" fill="#5C665F">빌드</text><line x1="325" y1="50" x2="336" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a5)"/><rect x="338" y="20" width="150" height="60" rx="9" fill="#E6F4F1" stroke="#0D9488"/><text x="413" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#0F766E">QA 검증</text><text x="413" y="64" text-anchor="middle" font-size="11" fill="#0F766E">TC 설계·예외 시나리오</text><line x1="491" y1="50" x2="502" y2="50" stroke="#0D9488" stroke-width="1.6" marker-end="url(#a5)"/><rect x="504" y="20" width="150" height="60" rx="9" fill="#FFFFFF" stroke="#C2CCBE"/><text x="579" y="46" text-anchor="middle" font-size="13" font-weight="600" fill="#14211E">릴리즈</text><text x="579" y="64" text-anchor="middle" font-size="11" fill="#5C665F">회귀·통합 테스트</text></svg><div class="cap">기획 단계부터 QA가 참여해 User Case 기반 시나리오를 설계 → 결함 검출율 50% 이상 향상</div></div>
     <div class="logorow"><span class="lg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.571 11.513H0a5.218 5.218 0 0 0 5.232 5.215h2.13v2.057A5.215 5.215 0 0 0 12.575 24V12.518a1.005 1.005 0 0 0-1.005-1.005zm5.723-5.756H5.736a5.215 5.215 0 0 0 5.215 5.214h2.129v2.058a5.218 5.218 0 0 0 5.215 5.214V6.758a1.001 1.001 0 0 0-1.001-1.001zM23.013 0H11.455a5.215 5.215 0 0 0 5.215 5.215h2.129v2.057A5.215 5.215 0 0 0 24 12.483V1.005A1.001 1.001 0 0 0 23.013 0Z"/></svg>Jira</span><span class="lg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>Slack</span></div></div>
   </details>
 </section></div>
