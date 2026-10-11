@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="뷰티샵 예약·고객관리 서비스 Vesta를 혼자 기획·디자인·개발·배포·운영하는 빌더 김준영의 포트폴리오. 문제 정의, 빠른 출시, 피드백 기반 개선, 지표 설계." />
+<meta name="author" content="김준영" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="김준영 · Builder · Problem Solver" />
+<meta property="og:description" content="만든 것을 사용자 앞에 내놓고, 반응을 보고 다시 고치는 빌더 — Vesta 1인 기획·개발·운영" />
+<meta property="og:locale" content="ko_KR" />
+<meta name="twitter:card" content="summary" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232F55C8'/><text x='16' y='22' font-size='17' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'>K</text></svg>" />
+<title>김준영 · Builder · Problem Solver</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+  :root{
+    --bg:#FAFAF8; --surface:#FFFFFF; --ink:#151B2B; --text:#363C4A; --muted:#687080;
+    --ac:#2F55C8; --ac-d:#2343A6; --tint:#EBF0FC; --tint-2:#DCE5F9; --line:#E7E8EC; --alt:#F2F4F8;
+    --sans:'Noto Sans KR','Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+    --maxw:1000px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:72px;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all;overflow-wrap:break-word;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--tint);}
+  .progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--ac);z-index:60;}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(250,250,248,.88);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line);}
+  .nav .inner{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .nav .brand{font-weight:700;color:var(--ink);font-size:15px;white-space:nowrap;}
+  .nav .brand small{color:var(--muted);font-weight:500;margin-left:8px;}
+  .nav ul{display:flex;gap:22px;list-style:none;align-items:center;}
+  .nav a{font-size:14px;color:var(--muted);font-weight:500;padding:4px 0;border-bottom:2px solid transparent;white-space:nowrap;}
+  .nav a:hover{color:var(--ink);} .nav a.active{color:var(--ac-d);border-color:var(--ac);}
+  .nav a.qa{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:12.5px;}
+  .nav a.qa:hover{border-color:#0D9488;color:#0F766E;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  section.wrap{padding:110px 24px;}
+  .band{border-top:1px solid var(--line);} .band-alt{background:var(--alt);}
+  .sec-head{display:flex;align-items:baseline;gap:14px;padding-bottom:16px;margin-bottom:48px;border-bottom:2px solid var(--ink);}
+  .sec-head .no{font-size:12.5px;font-weight:800;color:var(--ac);letter-spacing:.06em;}
+  .sec-head h2{font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);font-weight:700;}
+  .sec-head .kr{margin-left:auto;font-size:13px;color:var(--muted);font-weight:500;}
+  .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ac-d);font-weight:700;}
+
+  /* hero */
+  .hero{padding:104px 0 92px;position:relative;overflow:hidden;}
+  .hero-in{display:grid;grid-template-columns:1fr 232px;gap:48px;align-items:center;}
+  .hero-deco span{position:absolute;border-radius:50%;filter:blur(3px);pointer-events:none;}
+  .hero-deco .c1{width:130px;height:130px;background:#D3DEF8;opacity:.5;top:-24px;right:36px;}
+  .hero-deco .c2{width:84px;height:84px;background:#BBCDF4;opacity:.4;top:64px;right:-14px;}
+  .hero h1{font-size:44px;line-height:1.2;letter-spacing:-.025em;color:var(--ink);font-weight:700;margin-top:20px;}
+  .hero h1 .ac{color:var(--ac);}
+  .hero .tag{font-size:19px;color:var(--ink);margin-top:18px;font-weight:500;opacity:.85;}
+  .hero .sub{font-size:15.5px;margin-top:16px;max-width:580px;}
+  .hero .meta{margin-top:22px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;}
+  .hero .meta i{color:#C9CDD5;font-style:normal;}
+  .hero .meta a:hover{color:var(--ac-d);}
+  .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;border-radius:10px;padding:10px 15px;border:1px solid var(--line);background:var(--surface);color:var(--ink);transition:border-color .15s,box-shadow .15s,transform .15s;}
+  .btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+  .btn:hover{border-color:#C6D0EC;box-shadow:0 6px 16px rgba(21,27,43,.07);transform:translateY(-1px);}
+  .btn.pri{background:var(--ac);border-color:var(--ac);color:#fff;}
+  .btn.pri:hover{background:var(--ac-d);}
+  .avatar{width:232px;height:232px;border-radius:50%;overflow:hidden;border:1px solid var(--line);box-shadow:0 10px 30px rgba(21,27,43,.10);}
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero-side{display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .badge{font-size:12px;color:var(--ac-d);background:var(--tint);border-radius:999px;padding:6px 13px;font-weight:600;white-space:nowrap;}
+
+  /* about */
+  .bio{max-width:760px;margin-bottom:44px;}
+  .bio p{margin-bottom:18px;font-size:16.5px;line-height:1.9;} .bio strong{color:var(--ink);font-weight:600;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 24px;}
+  .card .ic{width:34px;height:34px;border-radius:9px;background:var(--tint);display:grid;place-items:center;margin-bottom:13px;}
+  .card .ic svg{width:18px;height:18px;stroke:var(--ac-d);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .card h3{font-size:15.5px;color:var(--ink);font-weight:700;letter-spacing:-.01em;}
+  .card p{font-size:14.5px;color:var(--text);margin-top:10px;line-height:1.75;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;margin-top:28px;}
+  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .kpi .v{font-size:24px;font-weight:800;color:var(--ac);letter-spacing:-.02em;}
+  .kpi .k{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.5;}
+
+  /* product */
+  .prod{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:start;}
+  .prod .desc p{font-size:16px;line-height:1.9;margin-bottom:16px;}
+  .prod .desc strong{color:var(--ink);font-weight:600;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .chips span{font-size:12.5px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--ink);}
+  .journey{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 22px;box-shadow:0 2px 10px rgba(21,27,43,.04);}
+  .journey .jt{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--ac-d);margin-bottom:14px;}
+  .jstep{display:grid;grid-template-columns:30px 1fr;gap:12px;position:relative;padding-bottom:18px;}
+  .jstep:not(:last-child)::after{content:"";position:absolute;left:14px;top:30px;bottom:0;width:2px;background:var(--tint-2);}
+  .jstep .d{width:30px;height:30px;border-radius:50%;background:var(--tint);color:var(--ac-d);font-size:12.5px;font-weight:800;display:grid;place-items:center;}
+  .jstep b{display:block;font-size:15px;color:var(--ink);line-height:1.5;}
+  .jstep span{display:block;font-size:13.5px;color:var(--muted);line-height:1.6;margin-top:2px;}
+  .jstep.hl .d{background:var(--ac);color:#fff;}
+
+  /* cases */
+  .case{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:36px 40px;margin-bottom:36px;box-shadow:0 2px 10px rgba(21,27,43,.04);}
+  .case .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+  .case .num{font-size:12px;font-weight:800;color:var(--ac-d);letter-spacing:.1em;}
+  .case .co{font-size:12px;font-weight:700;color:var(--ac-d);background:var(--tint);border-radius:6px;padding:3px 9px;}
+  .case .co.qa{color:#0F766E;background:#E6F4F1;}
+  .case .yr{font-size:12px;color:var(--muted);}
+  .case h3{font-size:23px;font-weight:700;color:var(--ink);letter-spacing:-.015em;line-height:1.45;max-width:800px;}
+  .metric{display:flex;align-items:baseline;gap:12px;margin:20px 0 6px;flex-wrap:wrap;}
+  .metric .fig{font-size:32px;font-weight:800;color:var(--ac);letter-spacing:-.02em;line-height:1.1;}
+  .metric .lab{font-size:13.5px;color:var(--muted);}
+  .case .lead{font-size:16px;margin-top:16px;max-width:760px;line-height:1.85;}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin:24px 0 6px;max-width:820px;}
+  .flow .st{position:relative;background:var(--alt);border-radius:10px;padding:11px 13px;}
+  .flow .st b{display:block;font-size:13.5px;color:var(--ink);}
+  .flow .st span{display:block;font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:2px;}
+  .flow .st:not(:last-child)::after{content:"";position:absolute;right:-15px;top:50%;width:8px;height:8px;border-top:2px solid #AEB6C6;border-right:2px solid #AEB6C6;transform:translateY(-50%) rotate(45deg);}
+  .subh{margin:24px 0 2px;padding-left:11px;border-left:3px solid var(--ac);font-size:16.5px;font-weight:700;color:var(--ink);line-height:1.5;}
+  .subh .note{font-weight:400;color:var(--muted);font-size:14.5px;}
+  .clist{list-style:none;margin-top:10px;margin-left:12px;display:grid;gap:11px;max-width:760px;}
+  .clist li{position:relative;padding-left:21px;font-size:16px;line-height:1.8;}
+  .clist li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--ac);}
+  .clist strong{color:var(--ink);font-weight:600;}
+  .quote{margin-top:24px;max-width:760px;padding:14px 18px;border-left:3px solid var(--ac);background:#F7F9FE;border-radius:0 10px 10px 0;font-size:15px;line-height:1.8;color:var(--text);}
+  .result{margin-top:22px;background:var(--tint);border-radius:10px;padding:16px 20px;font-size:15px;color:var(--ink);line-height:1.75;max-width:760px;}
+  .result .rl{display:block;font-size:11.5px;font-weight:700;letter-spacing:.06em;color:var(--ac-d);margin-bottom:6px;}
+  .result ul{list-style:none;display:grid;gap:5px;}
+  .result li{position:relative;padding-left:15px;font-size:15px;line-height:1.75;}
+  .result li::before{content:"";position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:var(--ac-d);}
+
+  .figure{margin-top:24px;background:#F3F5FA;border:1px solid #DDE3EF;border-radius:12px;padding:20px 22px 16px;max-width:760px;}
+  .figure .ft{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:12px;}
+  .figure .cap{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.6;}
+  .bars{display:grid;gap:10px;}
+  .bar{display:grid;grid-template-columns:120px 1fr 64px;gap:12px;align-items:center;}
+  .bar .bl{font-size:13px;color:var(--text);}
+  .bar .bt{height:20px;border-radius:5px;background:#E1E6F0;overflow:hidden;}
+  .bar .bt span{display:block;height:100%;border-radius:5px;background:#AFC0EA;width:0;transition:width .9s ease;}
+  .bar .bt span.hi{background:var(--ac);}
+  .bar .bv{font-size:13px;font-weight:700;color:var(--ink);text-align:right;}
+  .bargrp+.bargrp{margin-top:16px;padding-top:14px;border-top:1px dashed #D3DAE8;}
+  .bargrp .gl{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:8px;}
+  .parse{display:grid;gap:10px;}
+  .parse .row{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:start;}
+  .parse .lv{font-size:12px;font-weight:700;color:var(--ac-d);padding-top:6px;}
+  .parse .in{font-size:13.5px;background:#fff;border:1px solid #DDE3EF;border-radius:9px;padding:7px 12px;color:var(--ink);line-height:1.6;}
+  .parse .in small{display:block;color:var(--muted);font-size:12px;}
+
+  /* how */
+  .how-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-bottom:34px;}
+  .how-flow .st{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;}
+  .how-flow .st .k{font-size:11.5px;font-weight:800;color:var(--ac);letter-spacing:.08em;}
+  .how-flow .st b{display:block;font-size:15px;color:var(--ink);margin-top:4px;}
+  .how-flow .st span{display:block;font-size:13px;color:var(--muted);margin-top:4px;line-height:1.6;}
+  .how-flow .st:not(:last-child)::after{content:"";position:absolute;right:-15px;top:50%;width:8px;height:8px;border-top:2px solid #AEB6C6;border-right:2px solid #AEB6C6;transform:translateY(-50%) rotate(45deg);}
+  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .how-grid .card ul{list-style:none;margin-top:10px;display:grid;gap:8px;}
+  .how-grid .card li{position:relative;padding-left:14px;font-size:14px;line-height:1.7;}
+  .how-grid .card li::before{content:"";position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:var(--ac);}
+
+  /* timeline */
+  .tl{position:relative;padding-left:26px;}
+  .tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line);}
+  .tl .item{position:relative;padding-bottom:34px;}
+  .tl .item::before{content:"";position:absolute;left:-24px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--surface);border:2px solid var(--ac);}
+  .tl .item.now::before{background:var(--ac);}
+  .tl .yr{font-size:12.5px;color:var(--ac-d);font-weight:700;}
+  .tl .co{font-size:17px;color:var(--ink);font-weight:700;margin-top:2px;letter-spacing:-.01em;}
+  .tl .ro{font-size:13.5px;color:var(--muted);margin-top:2px;}
+  .tl .ds{font-size:15px;margin-top:10px;max-width:680px;line-height:1.8;}
+  .tl .ds li{list-style:none;position:relative;padding-left:14px;margin-top:4px;}
+  .tl .ds li::before{content:"";position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:#AEB6C6;}
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:20px;}
+  .skills .sk{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .skills .sk h4{font-size:13.5px;color:var(--ink);font-weight:700;}
+  .skills .sk p{font-size:14px;margin-top:6px;line-height:1.7;}
+  .certs{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
+  .certs span{font-size:13px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 14px;}
+  .certs b{color:var(--ac-d);}
+  .qa-link{margin-top:30px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 22px;}
+  .qa-link p{font-size:14.5px;flex:1;min-width:240px;}
+  .qa-link a{font-size:13.5px;font-weight:600;color:#0F766E;border:1px solid #CFE6E1;background:#E6F4F1;border-radius:999px;padding:8px 16px;white-space:nowrap;}
+
+  /* dots + pager */
+  .dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:45;display:flex;flex-direction:column;gap:14px;}
+  .dots a{position:relative;width:9px;height:9px;border-radius:50%;background:#CFD4DE;transition:background .18s,transform .18s;}
+  .dots a:hover,.dots a.on{background:var(--ac);transform:scale(1.25);}
+  .dots a span{position:absolute;right:20px;top:50%;transform:translateY(-50%) translateX(6px);opacity:0;pointer-events:none;white-space:nowrap;font-size:11.5px;color:#fff;background:var(--ink);padding:4px 9px;border-radius:6px;transition:opacity .18s,transform .18s;}
+  .dots a:hover span{opacity:1;transform:translateY(-50%) translateX(0);}
+  .pager{position:fixed;right:22px;bottom:24px;z-index:45;display:flex;flex-direction:column;gap:8px;}
+  .pager button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.92);color:var(--ink);cursor:pointer;display:grid;place-items:center;box-shadow:0 4px 14px rgba(21,27,43,.10);}
+  .pager button:hover{background:var(--ac);color:#fff;}
+  .pager svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+  .rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;}
+  .rv.in{opacity:1;transform:none;}
+  footer{padding:44px 0 60px;border-top:1px solid var(--line);background:var(--alt);}
+  .f-in{max-width:var(--maxw);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .f-name{font-size:16px;font-weight:700;color:var(--ink);}
+  .f-name span{font-size:12.5px;color:var(--muted);font-weight:500;margin-left:8px;}
+  .f-meta{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--text);flex-wrap:wrap;}
+  .f-meta i{color:#C9CDD5;font-style:normal;}
+  .f-meta a:hover{color:var(--ac-d);}
+  .f-top{margin-left:auto;font-size:13px;color:var(--ac-d);font-weight:600;border:1px solid var(--line);border-radius:999px;padding:8px 16px;background:var(--surface);}
+  .f-top:hover{background:var(--ac);color:#fff;border-color:var(--ac);}
+
+  @media (max-width:960px){
+    .cards{grid-template-columns:repeat(2,1fr);}
+    .how-grid{grid-template-columns:1fr;}
+    .prod{grid-template-columns:1fr;gap:28px;}
+  }
+  @media (max-width:860px){
+    .hero-in{grid-template-columns:1fr;gap:22px;} .hero-side{order:-1;align-items:center;flex-direction:row;gap:14px;} .hero-deco{display:none;}
+    .avatar{width:96px;height:96px;}
+    .hero{padding:64px 0 56px;} .hero h1{font-size:31px;} .hero .tag{font-size:16.5px;}
+    .dots,.pager{display:none;} .nav ul{gap:14px;} .nav .brand small{display:none;}
+    section.wrap{padding:64px 20px;} .sec-head{margin-bottom:32px;} .sec-head .kr{display:none;}
+    .case{padding:26px 20px;margin-bottom:24px;border-radius:14px;}
+    .case h3{font-size:20px;} .metric .fig{font-size:26px;}
+    .flow,.how-flow{grid-template-columns:1fr 1fr;gap:12px;}
+    .flow .st::after,.how-flow .st::after{display:none;}
+    .bio p{font-size:15.5px;} .clist{margin-left:4px;} .clist li{font-size:15px;}
+    .bar{grid-template-columns:92px 1fr 52px;gap:8px;}
+    .parse .row{grid-template-columns:1fr;gap:4px;} .parse .lv{padding-top:0;}
+  }
+  @media (max-width:560px){
+    .nav ul li.opt{display:none;}
+    .cards{grid-template-columns:1fr;} .card{padding:20px 20px;}
+    .wrap{padding:0 16px;} section.wrap{padding:56px 16px;}
+    .hero h1{font-size:27px;}
+    .figure{padding:16px 14px 12px;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.rv{opacity:1;transform:none;transition:none;}.bar .bt span{transition:none;}}
+  @media print{.nav,.dots,.pager,.progress{display:none;}.rv{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav class="nav">
+  <div class="inner">
+    <a href="#hero" class="brand">김준영<small>Builder · Problem Solver</small></a>
+    <ul>
+      <li><a href="#about">소개</a></li>
+      <li><a href="#vesta">Vesta</a></li>
+      <li><a href="#cases">사례</a></li>
+      <li class="opt"><a href="#how">방식</a></li>
+      <li class="opt"><a href="#career">경력</a></li>
+      <li><a href="../" class="qa">QA 포트폴리오</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="wrap hero" id="hero">
+  <div class="hero-deco" aria-hidden="true"><span class="c1"></span><span class="c2"></span></div>
+  <div class="hero-in">
+    <div>
+      <p class="eyebrow">Builder · Problem Solver</p>
+      <h1>만든 것을 <span class="ac">사용자 앞에</span> 내놓고,<br/>반응을 보고 다시 고치는 빌더</h1>
+      <p class="tag">문제 정의 · 빠른 출시 · 피드백 기반 개선 · 지표 설계</p>
+      <p class="sub">뷰티샵 원장님에게 직접 들은 불편에서 시작해 예약·고객관리 서비스 Vesta를 혼자 만들어 운영하고 있습니다. 기획·디자인·개발·배포·마케팅·CS를 모두 맡고 있고, Claude Code로 iOS·Android·Web 3플랫폼을 출시했습니다.</p>
+      <div class="cta">
+        <a class="btn pri" href="https://apps.apple.com/kr/app/vesta-뷰티샵-원장님을-위한-10초-예약-매출관리/id6761912377" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>App Store</a>
+        <a class="btn pri" href="https://play.google.com/store/apps/details?id=com.kimuu.vesta&amp;pcampaignid=web_share" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg>Google Play</a>
+        <a class="btn" href="https://vestaweb.net/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>vestaweb.net</a>
+        <a class="btn" href="kimjunyoung_resume.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M8 14h8M8 18h5"/></svg>이력서 PDF</a>
+        <a class="btn" href="kimjunyoung_portfolio.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M8 14h8M8 18h5"/></svg>포트폴리오 PDF</a>
+      </div>
+      <div class="meta">
+        <a href="mailto:tsi04037@gmail.com">tsi04037@gmail.com</a><i>·</i>
+        <a href="tel:+821045178157">010-4517-8157</a><i>·</i>
+        <span>경기 성남 분당</span>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="avatar"><img src="profile.jpg" alt="김준영 프로필 사진" width="232" height="232" /></div>
+      <div class="badge">Vesta 1인 기획·개발·운영</div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== ABOUT ===================== -->
+<div class="band band-alt"><section class="wrap" id="about">
+  <div class="sec-head"><span class="no">01</span><h2>About</h2><span class="kr">소개 · 지원 동기</span></div>
+  <div class="bio">
+    <p>3년 7개월 동안 QA Engineer로 일하면서, 기능이 명세대로 동작하는 것과 사용자가 실제로 그 기능을 쓰는 것은 다르다는 걸 계속 확인했습니다. 커머스 회사에서는 전체 인기 상품을 추천하자는 기획에, 평소 관심 있거나 자주 사는 카테고리의 상위 상품이 더 매력적일 것이라는 가설로 '자주 구매하는 카테고리의 인기 상품'을 제안했습니다. A/B 테스트에서 클릭률이 10% 미만에서 18% 이상으로 올라 제안안으로 출시됐고, <strong>같은 상품이라도 나에게 맞춰져 있을 때 더 많이 눌린다는 걸</strong> 그때 숫자로 확인했습니다.</p>
+    <p>Vesta는 회사에 다니면서 이미 만들기 시작한 서비스입니다. 지인 원장님에게 "기존 앱은 너무 어렵다, 간단하게 입력만 해서 예약·매출·고객을 다 관리하고 싶다"는 말을 듣고, 이렇게 들어가면 큰 시장은 아니어도 정말 필요한 원장님들에게는 닿을 수 있겠다고 생각했습니다. 사이드 프로젝트로 시작해 개인사업자로 전환했고, 만들면서 <strong>제 설계 의도와 사용자의 실제 행동이 다를 때 어느 쪽을 따라야 하는지</strong>를 가장 많이 고민했습니다.</p>
+    <p>혼자 만드는 일은 재미있지만 무엇을 무료로 두고 어디서 돈을 받을지, 어느 채널에 시간을 쓸지 같은 사업적인 판단은 매번 작은 근거로 내려야 했고, 그 부분이 가장 부족하다고 느꼈습니다. 하나의 카테고리를 사업처럼 처음부터 끝까지 맡으면서 그 판단을 더 많은 고객과 데이터 위에서 배우고 싶습니다.</p>
+    <p>대신 바로 보탤 수 있는 경험도 있습니다. <strong>고객을 직접 만나 문제를 정의하고, 3~5일 주기로 기획부터 출시까지 혼자 돌려 본 경험</strong>은 가설을 빠르게 고객 앞에 내놓아야 하는 Problem Solver의 일과 같은 방식입니다. 커머스에서는 주문·결제·배송 흐름을 사용자 관점에서 검증했고 추천 기획에 개인화 대안을 내 A/B로 확인해 봤습니다. 또 AI가 만든 결과물을 판정 기준을 세워 검증한 뒤 실무에 써 왔기 때문에, 쇼핑 AI 에이전트가 내놓는 추천과 답이 고객에게 믿을 만한지 확인하는 일에서도 이 경험을 살릴 수 있다고 생각합니다.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+      <h3>문제를 현장에서 정의합니다</h3><p>지인 원장님의 불편에서 시작했고, 출시 후에도 매장을 직접 찾아가 왜 쓰는지, 왜 안 쓰는지를 듣습니다.</p></div>
+    <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+      <h3>가설을 빠르게 내놓습니다</h3><p>기능 단위로 3~5일 주기로 기획부터 스토어 출시까지 반복하고, 큰 기능도 3주 안에 사용자 앞에 내놓습니다.</p></div>
+    <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-3-6.7L21 8M21 3v5h-5"/></svg></div>
+      <h3>피드백으로 고칩니다</h3><p>"템플릿 그대로 쓰고 싶다"는 말에 설계 방향을 바꿨고, "입력창이 안 보인다"는 말에 핵심 기능의 진입점을 바꿨습니다.</p></div>
+    <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+      <h3>성공 기준을 먼저 정합니다</h3><p>설치 수가 아니라 '첫 예약 등록률'을 주 지표로 두고, 기준선을 먼저 고정한 뒤 변화를 봅니다.</p></div>
+    <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg></div>
+      <h3>사용자를 직접 데려옵니다</h3><p>스레드 네트워킹, 매장 방문, 지인 소개, 푸시 재유입까지 채널마다 어떤 사용자가 들어오는지 확인했습니다.</p></div>
+    <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M12 19h8"/></svg></div>
+      <h3>AI로 혼자 끝냅니다</h3><p>Claude Code로 3플랫폼 출시와 운영 도구까지 만들고, 저는 기획·로직·UI/UX·비즈니스 판단에 집중합니다.</p></div>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="v">87명</div><div class="k">Vesta 누적 가입자 · 주간 활성 21명</div></div>
+    <div class="kpi"><div class="v">6→12명</div><div class="k">실제 예약으로 샵을 운영하는 핵심 사용자</div></div>
+    <div class="kpi"><div class="v">90%+</div><div class="k">베스타 링크 빌드 진입 후 게시 완료</div></div>
+    <div class="kpi"><div class="v">10%→18%</div><div class="k">커머스 추천 개인화 A/B 클릭률</div></div>
+  </div>
+</section></div>
+
+<!-- ===================== VESTA ===================== -->
+<div class="band"><section class="wrap" id="vesta">
+  <div class="sec-head"><span class="no">02</span><h2>Vesta</h2><span class="kr">직접 만들어 운영하는 서비스</span></div>
+  <div class="prod">
+    <div class="desc">
+      <p><strong>Vesta는 뷰티샵 원장님을 위한 예약·고객관리 서비스</strong>입니다. Timeblocks처럼 캘린더를 중심에 둔 간단한 일정 관리 앱을 지향하고, '하나하나 내 맞춤으로 설정해 두면 나중에는 조금만 조작해도 다 관리되는 앱'을 목표로 만들고 있습니다.</p>
+      <p>2026년 4월 사이드 프로젝트로 시작해 개인사업자로 전환했고, iOS·Android·Web 3플랫폼을 혼자 출시해 운영하고 있습니다. BM은 '전 기능 무료 + 알림톡 크레딧 과금'이며, 2026년 10월에는 예약과 연결되는 개인 링크 '베스타 링크'를 출시했습니다.</p>
+      <div class="chips">
+        <span>SwiftUI</span><span>Android</span><span>Next.js</span><span>TypeScript</span><span>Firebase</span><span>Cloud Functions</span><span>StoreKit 2</span><span>Google Play Billing</span><span>SOLAPI 알림톡</span><span>GA4</span>
+      </div>
+    </div>
+    <div class="journey" aria-label="Vesta 메인 여정">
+      <div class="jt">MAIN JOURNEY — 예약 저장 하나로 장부·매출까지</div>
+      <div class="jstep hl"><span class="d">1</span><div><b>간편입력</b><span>"김민지 3시 눈썹문신" 한 줄, 또는 카카오톡 예약완료 메시지 붙여넣기</span></div></div>
+      <div class="jstep"><span class="d">2</span><div><b>예약 저장</b><span>캘린더에 바로 반영, 실패하면 입력값이 채워진 상세입력으로</span></div></div>
+      <div class="jstep"><span class="d">3</span><div><b>고객 장부 · 매출</b><span>예약이 쌓이면 고객 기록과 매출이 따로 입력 없이 채워짐</span></div></div>
+      <div class="jstep"><span class="d">4</span><div><b>알림톡 · 베스타 링크</b><span>손님 알림은 크레딧으로, 손님 유입은 예약과 연결된 개인 링크로</span></div></div>
+    </div>
+  </div>
+</section></div>
+
+<!-- ===================== CASES ===================== -->
+<div class="band band-alt"><section class="wrap" id="cases">
+  <div class="sec-head"><span class="no">03</span><h2>Case Studies</h2><span class="kr">가설 · 실행 · 검증</span></div>
+
+  <!-- CASE 01 -->
+  <article class="case">
+    <div class="top"><span class="num">CASE 01</span><span class="co">Vesta · 베스타 링크</span><span class="yr">2026.10</span></div>
+    <h3>원장님들이 이미 쓰던 도구에서 가설을 찾고, 3주 만에 내놓아 확인하다</h3>
+    <div class="metric"><span class="fig">10명 복귀</span><span class="lab">출시 푸시 1회로 휴면·기존 유저가 돌아와 링크 생성</span></div>
+    <p class="lead">가입자는 87명이 되었지만 주간 활성은 21명이었습니다. 설치만 해두고 쓰지 않는 원장님들을 다시 데려와야 했고, 새로운 원장님이 들어올 길도 필요했습니다. 그래서 새 기능을 고민하기 전에 원장님들이 지금 무엇을 쓰고 있는지부터 살펴봤습니다.</p>
+    <div class="flow">
+      <div class="st"><b>현장 관찰</b><span>개인 링크 · 카톡·인스타</span></div>
+      <div class="st"><b>가설</b><span>링크와 예약을 연결</span></div>
+      <div class="st"><b>자문 · 클로즈 베타</b><span>디자인 · 사용 경험</span></div>
+      <div class="st"><b>출시 · 측정</b><span>푸시 · 팝업 퍼널</span></div>
+    </div>
+    <div class="subh">원장님들이 이미 쓰던 것에서 시작하기</div>
+    <ul class="clist">
+      <li>원장님들은 링크트리, 인포크 같은 서비스로 개인 링크를 만들어 카카오톡과 인스타그램 프로필에 걸어두고, 예약 현황·공지사항·카카오톡 채널·인스타그램으로 손님을 보내고 있었습니다.</li>
+      <li>그런데 이 링크들은 '내 예약 서비스'와 거의 연결되어 있지 않았습니다. 네이버 예약처럼 손님이 예약을 요청하고 원장님이 수락·거절하는 흐름이 링크 안에서 이어지지 않았습니다.</li>
+      <li>따라서 Vesta가 이 링크를 <strong>무료로 제공하고 예약 시스템과 연동</strong>하면 링크에서 예약까지 한 흐름으로 이어지고, 그 과정에서 유일한 BM인 알림톡 사용도 늘어날 것이라고 가설을 세웠습니다.</li>
+    </ul>
+    <div class="subh">손님에게 보이는 화면이라 완성도를 먼저 챙기기</div>
+    <ul class="clist">
+      <li>디자이너 지인과 실제 원장님들께 사용 경험과 디자인 방향을 계속 자문받다 보니 기획부터 출시까지 테스트를 포함해 3주가 걸렸고, 지금까지 만든 기능 중 가장 긴 기간이었습니다.</li>
+      <li>출시 직전에는 템플릿 방식(CASE 02)과 함께 구독 구조를 더했습니다. 이미지를 많이 쓰는 페이지라 구현한 코드 기준으로 서버비를 계산해 보니 방문자가 늘수록 제 부담이 커지는 구조였고, 그래서 <strong>이미지를 일정 개수 이상 쓰거나 컬러를 더 다양하게 고르려면 구독</strong>하도록 바꿨습니다.</li>
+    </ul>
+    <div class="subh">출시하고, 누가 돌아오는지 확인하기</div>
+    <ul class="clist">
+      <li>출시일에 앱을 설치한 전체 사용자에게 푸시를 한 번 보냈고, 기존 사용자와 한 달 이상 접속하지 않았던 휴면 사용자 10명이 돌아와 베스타 링크를 만들었습니다(GA4 이벤트로 확인).</li>
+      <li>앱 진입 시 링크 제작을 안내하는 팝업은 이미 링크를 가진 사용자가 많아 전환이 낮게 나오는 것으로 보고 있습니다. 링크를 거친 예약과 알림톡 사용량은 이제 집계를 시작한 단계라, 가설의 나머지는 이 두 숫자로 확인할 예정입니다.</li>
+    </ul>
+    <div class="figure">
+      <div class="ft">앱 내 베스타 링크 유도 팝업 퍼널 (이번 주 기준)</div>
+      <div class="bars">
+        <div class="bar"><span class="bl">노출</span><span class="bt"><span data-w="100"></span></span><span class="bv">32</span></div>
+        <div class="bar"><span class="bl">클릭</span><span class="bt"><span data-w="25"></span></span><span class="bv">8</span></div>
+        <div class="bar"><span class="bl">게시</span><span class="bt"><span class="hi" data-w="12.5"></span></span><span class="bv">4</span></div>
+      </div>
+      <p class="cap">출시 푸시로 이미 링크를 만든 사용자가 많아, 팝업 전환은 신규·미생성 사용자 위주로 보고 있습니다.</p>
+    </div>
+    <div class="quote">원장님들이 링크 서비스를 따로 쓰고 있다는 것 자체가 이 기능이 필요하다는 근거라고 봤습니다. 제가 새로 만든 건 그 링크와 예약을 잇는 부분이었습니다.</div>
+    <div class="result"><span class="rl">결과</span><ul>
+      <li>출시 푸시 1회로 휴면·기존 유저 10명 복귀, 베스타 링크 생성</li>
+      <li>기획부터 출시까지 3주, 서버비를 근거로 무료 범위와 구독 범위를 출시 전에 나눔</li>
+    </ul></div>
+  </article>
+
+  <!-- CASE 02 -->
+  <article class="case">
+    <div class="top"><span class="num">CASE 02</span><span class="co">Vesta · 템플릿 · 진입점</span></div>
+    <h3>내 설계 방향보다 사용자의 속도를 택하다</h3>
+    <div class="metric"><span class="fig">90%+</span><span class="lab">베스타 링크 빌드 진입 후 게시 완료</span></div>
+    <p class="lead">Vesta는 '하나하나 내 맞춤으로 설정해 두면, 나중에는 조금만 조작해도 다 관리되는 앱'을 목표로 만들었습니다. 그런데 사용자가 원하는 게 처음부터 많이 설정하는 것보다 지금 당장 빨리 끝내는 것일 때가 있었고, 그럴 때는 제 설계 방향보다 사용자의 속도를 따랐습니다.</p>
+    <div class="flow">
+      <div class="st"><b>피드백 수집</b><span>클로즈 베타 · 사용 관찰</span></div>
+      <div class="st"><b>원인 파악</b><span>선택이 많음 · 진입점이 안 보임</span></div>
+      <div class="st"><b>구조 변경</b><span>템플릿 · + 버튼 · 2depth</span></div>
+      <div class="st"><b>결과 확인</b><span>게시 완료율</span></div>
+    </div>
+    <div class="subh">선택지를 줄여서 빠르게 <span class="note">— 베스타 링크 템플릿</span></div>
+    <ul class="clist">
+      <li>출시 전 일부 원장님들께 클로즈 베타처럼 베스타 링크 빌드를 먼저 써보게 했습니다. 저는 Vesta 전체의 방향대로 항목 하나하나를 직접 설정하도록 유도했는데, "대충 만들어져 있는 템플릿을 그대로 쓰고 싶다"는 피드백이 나왔습니다.</li>
+      <li>제 방향과는 달랐지만, 원장님들이 원한 건 링크를 빨리 만들어 거는 것이었습니다. 그래서 <strong>대표 템플릿 2종 중 하나를 고르고 색상·버튼·이미지만 바꾸는 방식</strong>으로 선택의 폭을 오히려 줄였고, 지금은 빌드에 진입한 원장님의 90% 이상이 게시까지 완료합니다.</li>
+    </ul>
+    <div class="subh">익숙한 자리로 옮기기 <span class="note">— 간편입력 진입점</span></div>
+    <ul class="clist">
+      <li>간편입력은 문장 한 줄로 예약을 만드는 핵심 기능입니다. 처음에는 Claude나 ChatGPT처럼 일별 시트 하단에 입력창을 항상 띄워 두었는데, 입력창이 눈에 잘 안 띈다는 피드백이 많았습니다.</li>
+      <li>원장님들에게 익숙한 건 채팅 입력창보다 캘린더 앱의 + 버튼이었기 때문에, 여러 캘린더 서비스처럼 <strong>+ 버튼을 누르면 입력창이 나오도록</strong> 바꿨습니다.</li>
+    </ul>
+    <div class="subh">덜 쓰게 하고 싶은 경로는 깊게 <span class="note">— 직접입력 2depth</span></div>
+    <ul class="clist">
+      <li>반대로 항목을 하나씩 고르는 직접입력은 + 버튼 다음에 [직접 선택해서 입력]을 한 번 더 눌러야 하는 2depth로 내렸습니다.</li>
+      <li>간편입력이 더 빠르고, 파싱에 실패해도 입력한 내용이 상세입력으로 넘어가기 때문에 손해가 없다는 걸 사용자가 자연스럽게 익히도록 의도한 구조입니다.</li>
+    </ul>
+    <div class="quote">피드백을 받으면 서비스의 정체성을 바꾸는 요청인지, 같은 일을 더 빨리 끝내게 해주는 요청인지부터 나눠 봤습니다. 템플릿과 + 버튼은 뒤의 경우라서 제 설계를 바꿨고, 앞의 경우는 CASE 06처럼 반영하지 않았습니다.</div>
+    <div class="result"><span class="rl">결과</span><ul>
+      <li>템플릿 방식 도입 후 베스타 링크 빌드 진입 대비 90% 이상 게시 완료</li>
+      <li>간편입력을 기본 경로로, 직접입력을 보조 경로로 재배치해 핵심 기능이 먼저 보이도록 개편</li>
+    </ul></div>
+  </article>
+
+  <!-- CASE 03 -->
+  <article class="case">
+    <div class="top"><span class="num">CASE 03</span><span class="co">Vesta · 간편입력</span></div>
+    <h3>핵심 기능을 원장님이 실제로 일하는 방식에 맞춰 넓히다</h3>
+    <div class="metric"><span class="fig">3단계 확장</span><span class="lab">단건 → 복수 예약 → 카카오톡 메시지 붙여넣기</span></div>
+    <p class="lead">간편입력의 첫 버전은 "김민지 3시 눈썹문신" 같은 한 건의 예약만 이해했습니다. 그런데 원장님들의 예약은 한 건씩 깔끔하게 들어오지 않습니다. 여러 건을 한 번에 적어야 할 때도 있고, 이미 카카오톡으로 손님에게 보낸 예약 메시지가 있기도 합니다. 그래서 원장님이 이미 가지고 있는 텍스트를 그대로 넣을 수 있게 입력 형태를 넓혔습니다.</p>
+    <div class="figure">
+      <div class="ft">간편입력이 이해하는 입력 형태</div>
+      <div class="parse">
+        <div class="row"><span class="lv">첫 버전</span><span class="in">김민지 3시 눈썹문신<small>→ 예약 1건</small></span></div>
+        <div class="row"><span class="lv">확장 1 · 복수</span><span class="in">김민지 3시 눈썹문신 / 김하율 5시 눈썹문신<small>→ 예약 2건으로 나눠 저장</small></span></div>
+        <div class="row"><span class="lv">확장 2 · 붙여넣기</span><span class="in">카카오톡으로 보낸 예약 확정 메시지(수동·자동) 전체<small>→ 이름·시간·시술을 찾아 예약 생성</small></span></div>
+        <div class="row"><span class="lv">안전망</span><span class="in">해석에 실패하면<small>→ 입력한 내용이 채워진 상세입력 화면으로 이동</small></span></div>
+      </div>
+    </div>
+    <div class="subh">이미 가진 텍스트를 그대로</div>
+    <ul class="clist">
+      <li>원장님들은 손님에게 카카오톡으로 예약 확정 메시지를 직접 보내거나 자동으로 발송합니다. 이 메시지를 복사해 붙여넣으면 그 안에서 정보를 찾아 예약을 만드는 기능을 추가했습니다.</li>
+      <li>사용자 요청이 아니라 제 아이디어였습니다. 예약 정보가 이미 카카오톡에 텍스트로 남아 있는데 그걸 다시 입력하게 하는 건 불필요한 일이라고 생각했습니다.</li>
+    </ul>
+    <div class="subh">실패해도 멈추지 않게</div>
+    <ul class="clist">
+      <li>자유 입력은 언제든 해석에 실패할 수 있습니다. 실패하면 입력한 내용이 상세입력 화면에 채워진 채로 넘어가도록 해서, 간편입력을 시도하는 것 자체가 손해가 되지 않게 했습니다.</li>
+      <li>CASE 02에서 직접입력을 2depth로 내릴 수 있었던 것도 이 안전망이 있었기 때문입니다.</li>
+    </ul>
+    <div class="result"><span class="rl">결과</span><ul>
+      <li>단건 → 복수 예약 → 카카오톡 메시지 붙여넣기로 입력 형태 확장</li>
+      <li>간편입력이 '예약 저장 하나로 고객 장부·매출이 채워지는' 메인 여정의 시작점이 됨</li>
+    </ul></div>
+  </article>
+
+  <!-- CASE 04 -->
+  <article class="case">
+    <div class="top"><span class="num">CASE 04</span><span class="co">Vesta · 지표</span></div>
+    <h3>무엇을 성공으로 볼지 먼저 정하고, 숫자를 의심하다</h3>
+    <div class="metric"><span class="fig">45%</span><span class="lab">첫 예약 등록률(24시간 내) · 기준선 43%</span></div>
+    <p class="lead">가입자 수십 명 규모에서는 숫자 몇 개만 흔들려도 결론이 바뀝니다. 그래서 무엇을 성공으로 볼지 먼저 정했고, 그 숫자가 정말 사용자의 행동을 보여주는지부터 확인했습니다.</p>
+    <div class="flow">
+      <div class="st"><b>지표 정의</b><span>첫 예약 등록률</span></div>
+      <div class="st"><b>계측</b><span>GA4 3플랫폼 동일 명세</span></div>
+      <div class="st"><b>정리</b><span>테스트 트래픽 제외 · 코호트</span></div>
+      <div class="st"><b>해석</b><span>기준선 대비 변화</span></div>
+    </div>
+    <div class="subh">설치 수가 아니라 첫 예약 등록</div>
+    <ul class="clist">
+      <li>Vesta는 예약을 저장해야 고객 장부와 매출이 채워지는 구조라, 앱을 설치하거나 가입한 것만으로는 아무것도 시작되지 않습니다. 그래서 주 지표를 '첫 예약 등록률'로 정하고, 지표를 처음 만든 시점까지의 전환율을 기준선으로 고정했습니다.</li>
+      <li>같은 이유로 앱을 열기만 한 사용자와 예약을 완료한 사용자를 처음부터 다르게 구분하고, <strong>실제로 예약을 등록하며 앱으로 샵을 운영하는 사용자만 활성으로 집계</strong>합니다. 이 기준으로 본 핵심 사용자는 6명에서 12명으로 늘었습니다.</li>
+    </ul>
+    <div class="subh">숫자를 먼저 의심하기</div>
+    <ul class="clist">
+      <li>3플랫폼에 같은 이벤트 명세로 GA4를 심고, 일일 지표 리포트로 퍼널과 코호트를 매일 확인합니다.</li>
+      <li>그런데 제가 QA를 하면서 가입·탈퇴 테스트를 반복하다 보니, 지표에 실제 사용자가 아닌 신규 가입과 이탈이 계속 쌓이고 있었습니다. 이 데이터로 본 퍼널 진단은 폐기하고, <strong>테스트 계정과 테스트 형태의 트래픽을 모두 제외</strong>한 뒤 다시 봤습니다.</li>
+      <li>코호트를 전수로 다시 분석한 결과 이탈은 대부분 가입 당일에 결정되고, 그 갈림길이 첫 예약 등록이라는 걸 확인했습니다.</li>
+    </ul>
+    <div class="subh">기준선 대비로 해석하기</div>
+    <ul class="clist">
+      <li>최근 마케팅 대상을 '예비 창업 원장님'까지 넓히면서, 아직 손님이 없어 앱을 열어만 보거나 가입만 하는 원장님 비율이 늘어난 영향으로 7일 내 등록률은 기준선보다 낮게 보고 있습니다. 그래서 숫자가 내려갔을 때 바로 기능 문제로 보지 않고, 그 기간에 들어온 사용자가 달라졌는지부터 확인합니다.</li>
+    </ul>
+    <div class="figure">
+      <div class="ft">첫 예약 등록률 · 기준선 대비 현재</div>
+      <div class="bargrp"><div class="gl">24시간 내</div><div class="bars">
+        <div class="bar"><span class="bl">기준선</span><span class="bt"><span data-w="43"></span></span><span class="bv">43%</span></div>
+        <div class="bar"><span class="bl">현재</span><span class="bt"><span class="hi" data-w="45"></span></span><span class="bv">45%</span></div>
+      </div></div>
+      <div class="bargrp"><div class="gl">7일 내</div><div class="bars">
+        <div class="bar"><span class="bl">기준선</span><span class="bt"><span data-w="59"></span></span><span class="bv">59%</span></div>
+        <div class="bar"><span class="bl">현재</span><span class="bt"><span class="hi" data-w="52"></span></span><span class="bv">52%</span></div>
+      </div></div>
+    </div>
+    <div class="result"><span class="rl">결과</span><ul>
+      <li>주 지표와 기준선을 먼저 고정해, 기능을 바꿀 때마다 같은 기준으로 비교</li>
+      <li>테스트 데이터로 오염된 진단을 폐기하고 테스트 계정·트래픽 제외, 이탈의 갈림길을 첫 예약 등록으로 확인</li>
+    </ul></div>
+  </article>
+
+  <!-- CASE 05 -->
+  <article class="case">
+    <div class="top"><span class="num">CASE 05</span><span class="co">Vesta · 고객 획득</span></div>
+    <h3>사용자를 어디서 데려오는지, 어떤 사용자가 남는지 확인하다</h3>
+    <div class="metric"><span class="fig">0~2 → 4~6명</span><span class="lab">스레드 활동일 일 가입 · 매장 방문 2곳 모두 전환</span></div>
+    <p class="lead">처음에는 제가 직접 알리는 방법부터 시작했습니다. 채널을 늘리는 것보다, 채널마다 어떤 사용자가 들어오고 그중 누가 실제로 남는지를 나눠서 보는 데 집중했습니다.</p>
+    <div class="flow">
+      <div class="st"><b>직접 알리기</b><span>스레드 · 방문 · 지인</span></div>
+      <div class="st"><b>가입</b><span>일 가입 수</span></div>
+      <div class="st"><b>활성 전환</b><span>첫 예약 · 헤비유저</span></div>
+      <div class="st"><b>재유입</b><span>푸시 · 팝업</span></div>
+    </div>
+    <div class="subh">가입을 늘리는 채널 <span class="note">— 스레드</span></div>
+    <ul class="clist">
+      <li>스레드에서 원장님들과 네트워킹하며 직접 Vesta를 알렸습니다. 평소 일 가입자는 0~2명인데, 스레드 활동을 많이 한 날에는 4~6명으로 확실히 늘었습니다.</li>
+      <li>다만 이 채널로 들어온 원장님 중에는 예비 창업 원장님도 많아서, 가입은 늘어도 바로 예약을 등록하지 않는 경우가 있었습니다(CASE 04).</li>
+    </ul>
+    <div class="subh">남는 사용자를 만드는 채널 <span class="note">— 매장 방문과 지인 소개</span></div>
+    <ul class="clist">
+      <li>매장 두 곳을 직접 방문해 소개했고, 두 곳 모두 가입해 실제로 쓰는 헤비유저가 되었습니다. 그중 한 곳은 <strong>기존에 쓰던 다른 예약 관리 서비스에서 Vesta로 옮겨왔습니다.</strong></li>
+      <li>지인 소개로 들어온 원장님들은 활성 사용자로 이어지는 경우가 많았습니다. 가입 수는 적어도 남는 비율이 높은 채널이었습니다.</li>
+    </ul>
+    <div class="subh">이미 설치한 사용자를 다시 데려오기</div>
+    <ul class="clist">
+      <li>새 기능이 나오면 FCM으로 전체 사용자에게 알리고, 앱 안에서는 팝업으로 다음 행동을 안내합니다. 베스타 링크 출시 푸시 1회로 휴면·기존 사용자 10명이 돌아왔습니다(CASE 01).</li>
+      <li>GEO·SEO는 설정만 해둔 상태라 아직 효과를 측정하지 않았고, 지면 광고는 전환보다 인지도를 위한 채널로 검토하고 있습니다.</li>
+    </ul>
+    <div class="figure">
+      <div class="ft">일 가입자 수 · 평소 vs 스레드 활동일</div>
+      <div class="bars">
+        <div class="bar"><span class="bl">평소</span><span class="bt"><span data-w="33"></span></span><span class="bv">0~2명</span></div>
+        <div class="bar"><span class="bl">스레드 활동일</span><span class="bt"><span class="hi" data-w="100"></span></span><span class="bv">4~6명</span></div>
+      </div>
+      <p class="cap">막대는 각 범위의 최댓값 기준입니다.</p>
+    </div>
+    <div class="quote">스레드는 가입을, 매장 방문과 지인 소개는 오래 쓰는 사용자를 데려왔습니다. 그래서 채널을 가입 수 하나로 비교하지 않고 활성 전환까지 나눠서 봅니다.</div>
+    <div class="result"><span class="rl">결과</span><ul>
+      <li>스레드 활동일 일 가입 0~2명 → 4~6명, 매장 방문 2곳 모두 헤비유저로 전환(1곳은 기존 서비스에서 이동)</li>
+      <li>가입자 87명, 주간 활성 21명·월간 활성 35명, 핵심 사용자 12명</li>
+    </ul></div>
+  </article>
+
+  <!-- CASE 06 -->
+  <article class="case">
+    <div class="top"><span class="num">CASE 06</span><span class="co">Vesta · BM · 정체성</span></div>
+    <h3>무엇을 무료로 두고, 무엇을 반영하지 않을지 정하다</h3>
+    <div class="metric"><span class="fig">결제 0건 → BM 전환</span><span class="lab">'전 기능 무료 + 알림톡 크레딧 과금'</span></div>
+    <p class="lead">처음에는 일부 기능을 유료로 두었지만 결제는 0건이었습니다. 원장님들에게 들은 이야기를 다시 보니 가격 자체보다 '필요 없는 기능까지 묶어서 돈을 낸다'는 데 대한 거부감이 컸습니다.</p>
+    <div class="flow">
+      <div class="st"><b>사용자 목소리</b><span>구독료 부담 · 끼워팔기</span></div>
+      <div class="st"><b>BM 전환</b><span>전 기능 무료 + 알림톡 크레딧</span></div>
+      <div class="st"><b>비용 계산</b><span>월 적자 상한 · 서버비</span></div>
+      <div class="st"><b>정체성 유지</b><span>반영하지 않을 기준</span></div>
+    </div>
+    <div class="subh">돈을 내기 싫은 이유에서 다시 시작하기</div>
+    <ul class="clist">
+      <li>기존 뷰티샵 관리 앱에 대해 원장님들께 가장 많이 들은 이야기는 "구독료가 조금만 들어도 부담스럽다", "진짜 필요한 기능에 돈을 내는 게 아니라 끼워팔기라서 내기 싫다", "UI와 디자인이 구리다"였습니다.</li>
+      <li>유료 기능 결제가 0건이고 수요가 알림톡에 몰려 있다는 걸 근거로, <strong>모든 기능을 무료로 열고 실제로 쓰는 만큼만 내는 알림톡 크레딧 과금</strong>으로 바꿨습니다. 앞으로의 유료화도 '주요 기능은 무료, 추가 기능만 개별 유료'라는 원칙으로 갈 계획입니다.</li>
+    </ul>
+    <div class="subh">적자의 상한을 먼저 계산하기</div>
+    <ul class="clist">
+      <li>전 기능을 무료로 열기 전에 제가 매달 감당할 수 있는 적자 상한부터 계산했습니다. 현재 월 운영비는 1~2만 원 수준입니다.</li>
+      <li>베스타 링크처럼 사용량에 따라 비용이 커지는 기능은 서버비를 따로 계산해서, 기본 기능은 무료로 두고 이미지·컬러 확장만 구독으로 나눴습니다(CASE 01).</li>
+      <li>알림톡은 돈이 오가는 경로라서 발송 큐, 발송 직전 5단계 체크, 크레딧 원장을 먼저 구조로 설계했습니다. 중복 발송이나 차감 오류가 나지 않게 하는 게 우선이었고, 현재 알림톡 발송은 주 50건 내외입니다.</li>
+    </ul>
+    <div class="subh">반영하지 않을 피드백 정하기</div>
+    <ul class="clist">
+      <li>Vesta는 Timeblocks처럼 캘린더를 중심으로 한 간단한 일정 관리 앱을 지향합니다.</li>
+      <li>다른 뷰티샵 관리 앱들처럼 첫 화면을 캘린더가 아닌 다른 화면으로 바꾸자는 요청, 결산 기능은 필요 없다는 의견도 있었지만 반영하지 않았습니다. 캘린더 중심이라는 Vesta만의 지향점은 그대로 두기로 했습니다.</li>
+    </ul>
+    <div class="result"><span class="rl">결과</span><ul>
+      <li>유료 기능 결제 0건을 근거로 BM 전환, 월 운영비 1~2만 원 수준에서 전 기능 무료 유지</li>
+      <li>비용이 커지는 기능은 출시 전에 무료·구독 범위를 나누고, 정체성에 맞지 않는 요청은 기준을 세워 반영하지 않음</li>
+    </ul></div>
+  </article>
+
+  <!-- CASE 07 -->
+  <article class="case">
+    <div class="top"><span class="num">CASE 07</span><span class="co qa">애즈위메이크 · QA Engineer</span><span class="yr">2025.09 ~ 2026.07 · 커머스 B2C·B2B</span></div>
+    <h3>커머스 사용자의 행동을 기준으로 기획과 정책을 바꾸다</h3>
+    <div class="metric"><span class="fig">10% → 18%</span><span class="lab">상품 추천 클릭률 · 2주 A/B 테스트 후 제안안 출시</span></div>
+    <p class="lead">마트 상품 비대면 배송 서비스(B2C)와 마트 사장님용 상품관리 솔루션(B2B)을 QA로 담당했습니다. 검증하는 역할이었지만, 사용자가 실제로 어떻게 사고 어떻게 다시 시도하는지를 기준으로 기획과 정책에도 의견을 냈습니다.</p>
+    <div class="subh">추천 기획에 대안을 가설로 내기</div>
+    <ul class="clist">
+      <li>상품 추천 기능이 '전체 인기 상품'을 보여주는 방향으로 킥오프되었습니다. 전체 인기 상품도 충분히 매력적이지만, 저는 평소 관심 있거나 자주 사는 카테고리의 상위 상품이 더 매력적일 것이라고 생각했습니다. <strong>나에게 맞춰진 상품일수록 더 많이 누르고 살 것이라는 개인화에 대한 가설</strong>이었습니다.</li>
+      <li>확신할 근거가 있는 건 아니었기 때문에 주장 대신 A/B 테스트를 제안했고, 클릭률 이벤트를 기준으로 2주간 비교했습니다.</li>
+    </ul>
+    <div class="figure">
+      <div class="ft">상품 추천 클릭률 · 2주 A/B 테스트</div>
+      <div class="bars">
+        <div class="bar"><span class="bl">전체 인기 상품</span><span class="bt"><span data-w="10"></span></span><span class="bv">10% 미만</span></div>
+        <div class="bar"><span class="bl">자주 사는 카테고리</span><span class="bt"><span class="hi" data-w="18"></span></span><span class="bv">18% 이상</span></div>
+      </div>
+    </div>
+    <div class="subh">데이터는 정상이어도 사용자가 손해 보는 구조</div>
+    <ul class="clist">
+      <li>알림 발송에 쓰이는 유상 재화가 외부 벤더 오류로 실패한 뒤에도 '소진' 상태로 남았습니다. 내부 배치가 주기적으로 복구하는 구조라 데이터 정합성 관점에서는 문제가 없었습니다.</li>
+      <li>하지만 실패한 사용자는 곧바로 재시도하고, 그때 복구돼 있지 않으면 잔액 부족으로 막히거나 이중 차감된 것처럼 보입니다. 이 구조를 근거와 함께 제기했고, 실패 시점에 즉시 복구되도록 정책이 바뀌었습니다.</li>
+    </ul>
+    <div class="subh">현장의 불편을 개선 의견으로</div>
+    <ul class="clist">
+      <li>POS 연결과 상품 연동이 필요한 마트 사장님의 초기 개통·세팅 영역을 맡아, 개통 중 생기는 이슈를 팔로업하며 버그와 설정 문제를 구분했습니다. 반복되는 불편은 개선 의견으로 제안했습니다.</li>
+    </ul>
+    <div class="quote">QA를 하며 쌓은 '사용자가 다음에 무엇을 할까'에 대한 예상을 검증 범위를 잡는 데만 쓰지 않고, 기획 대안으로도 냈던 경험입니다.</div>
+    <div class="result"><span class="rl">결과</span><ul>
+      <li>상품 추천 클릭률 10% 미만 → 18% 이상, 제안안으로 출시</li>
+      <li>사용자의 재시도 행동을 근거로 유상 재화 정책을 즉시 복구로 개선</li>
+    </ul></div>
+  </article>
+</section></div>
+
+<!-- ===================== HOW ===================== -->
+<div class="band"><section class="wrap" id="how">
+  <div class="sec-head"><span class="no">04</span><h2>How I Build</h2><span class="kr">AI에게 구현을 맡기고, 판단과 검증을 맡다</span></div>
+  <div class="bio" style="margin-bottom:30px;"><p>Vesta의 코드는 Claude Code로 작성합니다. 저는 무엇을 왜 만들지, 로직과 정책이 맞는지, 화면이 원장님에게 자연스러운지, 비용과 BM에 맞는지를 판단하는 데 시간을 씁니다. 기능 단위로 <strong>3~5일 주기</strong>로 기획부터 스토어 출시까지 반복합니다.</p></div>
+  <div class="how-flow">
+    <div class="st"><span class="k">STEP 1</span><b>전략 세션</b><span>아이디어·가설 검토, 시장·웹 조사</span></div>
+    <div class="st"><span class="k">STEP 2</span><b>기획 · 디자인 세션</b><span>예외사항·추가사항 디벨롭</span></div>
+    <div class="st"><span class="k">STEP 3</span><b>플랫폼별 개발 세션</b><span>사이클당 최소 단위 기능 1개</span></div>
+    <div class="st"><span class="k">STEP 4</span><b>QA</b><span>탐색적 테스트 · 전체 QA 풀런 후 출시</span></div>
+  </div>
+  <div class="how-grid">
+    <div class="card"><h3>세션을 역할별로 나누기</h3><ul>
+      <li>플랫폼별 개발 · QA · 기획 · 디자인 · 비즈니스(전략) 세션으로 나눠 운영</li>
+      <li>전략 세션에서 정리한 판단을 기획·디자인 세션으로 옮긴 뒤 개발로 넘김</li>
+      <li>개발 세션은 개발 → QA(UI, 실기기, 유저 플로우, 신규·영향 기능) → 테스트 파이프라인</li>
+    </ul></div>
+    <div class="card"><h3>운영도 도구로</h3><ul>
+      <li>일일 지표 리포트 봇으로 퍼널·코호트를 매일 확인</li>
+      <li>스토어 출시 감시 Slack 봇으로 심사·출시 상태 확인</li>
+      <li>정부 지원사업 공고를 수집해 Vesta에 맞는지 판정하는 봇 운영</li>
+      <li>Maestro UI 자동화, 웹 배포 후 실서버 스모크 테스트</li>
+    </ul></div>
+    <div class="card"><h3>AI 결과물은 기준을 정해 검증</h3><ul>
+      <li>QA 시절 만든 TC 생성 도구의 첫 결과물은 QA 엔지니어 기준 20~30%만 충족</li>
+      <li>'TC라면 지켜져야 하는 기준'을 먼저 고정하고 실패 유형을 서브에이전트로 나눠 70~80%까지</li>
+      <li>그래서 Vesta에서도 무엇을 맞다고 볼지 먼저 정한 뒤 확인하고, 개발 세션 안에 QA 단계를 따로 둠</li>
+    </ul></div>
+  </div>
+</section></div>
+
+<!-- ===================== CAREER ===================== -->
+<div class="band band-alt"><section class="wrap" id="career">
+  <div class="sec-head"><span class="no">05</span><h2>Career</h2><span class="kr">경력 · 스킬 · 자격</span></div>
+  <div class="tl">
+    <div class="item now"><div class="yr">2026.04 ~ 현재</div><div class="co">Vesta</div><div class="ro">창업 · 1인 기획·개발·운영 · 뷰티샵 예약·고객관리(iOS·Android·Web)</div>
+      <p class="ds">원장님 현장 피드백으로 문제를 정의하고 3플랫폼을 혼자 출시·운영. 가입자 87명, 주간 활성 21명·월간 활성 35명, 핵심 사용자 12명.</p></div>
+    <div class="item"><div class="yr">2025.09 ~ 2026.07</div><div class="co">애즈위메이크</div><div class="ro">QA Engineer · 커머스 B2C(앱·웹)·B2B(POS 연동·상품관리)</div>
+      <ul class="ds">
+        <li>상품 추천에 개인화 대안을 제안해 A/B로 검증, 제안안으로 출시</li>
+        <li>사내 QA 플랫폼을 직접 개발(React·TypeScript·Supabase → NCP·Docker)해 일정 산정 오차 약 0.5MD, 대형 릴리즈를 3개월·3회에서 1개월·1회로 압축</li>
+        <li>Claude Code 기반 TC 생성 도구로 충족률 20~30% → 70~80%, 근거와 대안으로 배포 연기·핫픽스 판단(핫픽스 월 0~1회)</li>
+      </ul></div>
+    <div class="item"><div class="yr">2025.02 ~ 2025.08</div><div class="co">슈프리마</div><div class="ro">QA Engineer · 물리보안 SW</div>
+      <p class="ds">새 도메인에 Scrum 일원으로 합류해 Planning부터 참여, User Case 기반 시나리오 재설계로 결함 검출율 50% 이상 향상.</p></div>
+    <div class="item"><div class="yr">2023.01 ~ 2025.02</div><div class="co">디케이테크인 <span style="font-size:13px;color:var(--muted);font-weight:500;">(카카오웹툰)</span></div><div class="ro">QA Engineer · 콘텐츠 플랫폼(웹·앱)</div>
+      <p class="ds">클라우드 전환 검증에서 회차 미노출 원인을 S3 버킷 이미지 문제로 규명해 관련 유저 CS 40% 이상 감소. Admin 반복 업무 자동화로 테스팅 시간 30% 이상 단축.</p></div>
+    <div class="item"><div class="yr">2021.09 ~ 2021.12</div><div class="co">한국지능정보사회진흥원(NIA)</div><div class="ro">인턴 · 공공 데이터 품질</div>
+      <p class="ds">공공 데이터셋의 정확성·일관성 보장을 위한 데이터 처리 수행(우수인턴 수상).</p></div>
+  </div>
+  <div class="skills">
+    <div class="sk"><h4>기획 · 분석</h4><p>현장 인터뷰 기반 문제 정의, GA4 3플랫폼 이벤트 명세 설계, 퍼널·코호트 분석, A/B 테스트</p></div>
+    <div class="sk"><h4>고객 획득</h4><p>스레드 네트워킹, 매장 방문 영업, FCM 푸시 재유입, 앱 내 유도 팝업, GEO·SEO 설정</p></div>
+    <div class="sk"><h4>개발 · 배포</h4><p>SwiftUI, Android, Next.js, TypeScript, Firebase(Firestore·Cloud Functions·Auth·App Hosting), StoreKit 2·Google Play Billing 영수증 검증, SOLAPI 알림톡</p></div>
+    <div class="sk"><h4>AI</h4><p>Claude Code 역할별 세션 운영(전략·기획·디자인·개발·QA), Figma MCP·서브에이전트 기반 도구 제작, LLM 판정 기반 업무 자동화</p></div>
+    <div class="sk"><h4>데이터</h4><p>SQL(Oracle·MySQL·PostgreSQL), Cloud Firestore</p></div>
+    <div class="sk"><h4>자동화 · 운영</h4><p>일일 지표 리포트 봇, 스토어 출시 감시 Slack 봇, Maestro, GitHub Actions, Jenkins</p></div>
+  </div>
+  <div class="certs">
+    <span><b>AWS</b> Certified Solutions Architect – Associate · 2024.02</span>
+    <span><b>OPIc</b> Intermediate High · 2022.09</span>
+    <span>경기대학교 국어국문학과 졸업</span>
+  </div>
+  <div class="qa-link">
+    <p>QA Engineer로서의 검증 전략·자동화·릴리즈 판단 사례는 QA 포트폴리오에 따로 정리해 두었습니다.</p>
+    <a href="../">QA 포트폴리오 보기 →</a>
+  </div>
+</section></div>
+
+<nav class="dots" id="dots" aria-label="섹션 이동">
+  <a href="#hero"><span>표지</span></a>
+  <a href="#about"><span>소개</span></a>
+  <a href="#vesta"><span>Vesta</span></a>
+  <a href="#cases"><span>사례</span></a>
+  <a href="#how"><span>방식</span></a>
+  <a href="#career"><span>경력</span></a>
+</nav>
+<div class="pager">
+  <button id="prev" aria-label="이전 섹션"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></button>
+  <button id="next" aria-label="다음 섹션"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+</div>
+
+<footer>
+  <div class="f-in">
+    <div class="f-name">김준영 <span>Builder · Problem Solver</span></div>
+    <div class="f-meta"><a href="mailto:tsi04037@gmail.com">tsi04037@gmail.com</a><i>·</i><a href="tel:+821045178157">010-4517-8157</a><i>·</i><a href="https://vestaweb.net/" target="_blank" rel="noopener">vestaweb.net</a></div>
+    <a class="f-top" href="#hero">맨 위로 ↑</a>
+  </div>
+</footer>
+
+<script>
+  const bar=document.getElementById('progress');
+  const onScroll=()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';};
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  const secIds=['hero','about','vesta','cases','how','career'];
+  const secs=secIds.map(i=>document.getElementById(i)).filter(Boolean);
+  const dots=[...document.querySelectorAll('.dots a')];
+  const navLinks=[...document.querySelectorAll('.nav a[href^="#"]')];
+  const currentIndex=()=>{const y=window.scrollY+120;let idx=0;secs.forEach((s,i)=>{if(s.offsetTop<=y)idx=i;});return idx;};
+  const goTo=i=>{const t=secs[Math.max(0,Math.min(secs.length-1,i))];if(t)window.scrollTo({top:t.offsetTop-(i===0?0:56),behavior:'smooth'});};
+  document.getElementById('next').onclick=()=>goTo(currentIndex()+1);
+  document.getElementById('prev').onclick=()=>goTo(currentIndex()-1);
+  document.addEventListener('keydown',e=>{
+    if(e.target.matches('input,textarea'))return;
+    if(e.key==='ArrowDown'||e.key.toLowerCase()==='j'){e.preventDefault();goTo(currentIndex()+1);}
+    if(e.key==='ArrowUp'||e.key.toLowerCase()==='k'){e.preventDefault();goTo(currentIndex()-1);}
+  });
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+    const i=secs.indexOf(e.target);
+    dots.forEach((d,j)=>d.classList.toggle('on',j===i));
+    const id=e.target.id==='hero'?'about':e.target.id;
+    navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id));
+  }});},{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>io.observe(s));
+
+  const fill=root=>root.querySelectorAll('.bt span[data-w]').forEach(s=>{s.style.width=s.dataset.w+'%';});
+  document.querySelectorAll('.case,.card,.kpi,.tl .item,.bio,.journey,.sk,.how-flow .st').forEach(el=>el.classList.add('rv'));
+  const rv=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');fill(e.target);rv.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.02});
+  document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches){document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));fill(document);}
+</script>
+</body>
+</html>
